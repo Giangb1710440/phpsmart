@@ -239,6 +239,24 @@ class TestController extends Controller
         Session::put('add_cart_success');
         return redirect()->back()->with('add_cart_success', 'Đã thêm vào giỏ hàng');
     }
+//    public function addCard_qty($id, Request $request){
+//        if ($request -> input('qty_cart_product') >= 5){
+//            Session::put('no_add_cart_success');
+//            return redirect()->back()->with('no_add_cart_success', 'so luong khong cho phep');
+//        }
+//        $product = Product::find($id);
+//        $oldCart = Session('cart')?Session::get('cart'):null; // neu co session cart thi lay cart, khoong thi null
+//
+//        $cart = new Giohang($oldCart);
+//        $cart->add($product, $id);
+//        $request->session()->put('cart', $cart);
+//
+//        $add_cart_success = Session::get('add_cart_success');
+//        Session::put('add_cart_success');
+//        return redirect()->back()->with('add_cart_success', 'Đã thêm vào giỏ hàng');
+//    }
+
+
 
 
     public function updateCart(Request $request){
@@ -273,56 +291,167 @@ class TestController extends Controller
             Session::put('order_Nsuccess');
             return redirect()->back()->with('order_Nsuccess','Giỏ hàng rỗng!');
         }else {
-            $user_id = $request->input('user_id');
-
-            if($user_id == -1) {
-                $kh = new Khachhanng;
-                $kh->hoten = $request->input('fullname');
-                $kh->email = $request->input('email');
-                $kh->sdt = $request->input('phone');
-                $kh->diachi = $request->input('address');
-                $kh->save();
-
-                $order = new Order;
-                $order->user_id = $kh->id;
-                $order->order_date = Carbon::now();
-                $order->total_money = $request->input('total');
-                $order->status = 'Mới đặt hàng';
-                $order->save();
+            if ($request->input('type_pay') == 0) {
+                Session::put('non_cate_pay');
+                return redirect()->back()->with('non_cate_pay', 'Chưa chọn hình thức thanh toán');
+            } elseif ($request->input('type_pay') == 2) {
+                return view('customer.index_vnpay')->with([
+                    'total_price' => $request->input('total'),
+                    'fullname' => $request->input('fullname'),
+                    'email' => $request->input('email'),
+                    'phone' => $request->input('phone'),
+                    'address' => $request->input('address'),
+                ]);
             } else {
-                $order = new Order;
-                $order->user_id = $request->input('user_id');
-                $order->order_date = Carbon::now();
-                $order->total_money = $request->input('total');
-                $order->status = 'Mới đặt hàng';
-                $order->save();
+                $user_id = $request->input('user_id');
+                if($user_id == -1) {
+                    $kh = new Khachhanng;
+                    $kh->hoten = $request->input('fullname');
+                    $kh->email = $request->input('email');
+                    $kh->sdt = $request->input('phone');
+                    $kh->diachi = $request->input('address');
+                    $kh->save();
+                    $order = new Order;
+                    $order->user_id = $kh->id;
+                    $order->order_date = Carbon::now();
+                    $order->total_money = $request->input('total');
+                    $order->status = 3;
+                    $order->save();
+                } else {
+                    $order = new Order;
+                    $order->user_id = $request->input('user_id');
+                    $order->order_date = Carbon::now();
+                    $order->total_money = $request->input('total');
+                    $order->status = 3;
+                    $order->save();
+                }
+                foreach ($cart->items as $key => $value) {
+                    $orderDetail = new OrderDetail;
+                    $orderDetail->order_id = $order->id;
+                    $orderDetail->product_id = $key;
+                    $orderDetail->quantity = $value['qty'];
+                    $orderDetail->unit_price = ($value['price'] / $value['qty']);
+                    $orderDetail->save();
+                }
+                Session::forget('cart');
+                $order_success = Session::get('order_success');
+                Session::put('order_success');
+                return redirect()->back()->with('order_success', 'Đặt hàng thành công');
             }
+        }
 
-            foreach ($cart->items as $key => $value) {
-                $orderDetail = new OrderDetail;
-                $orderDetail->order_id = $order->id;
-                $orderDetail->product_id = $key;
-                $orderDetail->quantity = $value['qty'];
-                $orderDetail->unit_price = ($value['price'] / $value['qty']);
-                $orderDetail->save();
+    }
+
+    public function create(Request $request)
+    {
+        $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY
+        $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
+        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl = "http://localhost/phpsmart/return-page-vnpay-checkout";
+        $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = $request->input('order_desc');//noi dung thanh toan
+        $vnp_OrderType = 200000; //ma loai san pham thanh toan
+        $vnp_Amount = $request->input('amount') * 100;
+
+        $vnp_BankCode = $request->input('bank_code');
+        $vnp_Locale = 'vn';
+        $vnp_IpAddr = request()->ip();
+
+        $inputData = array(
+            "vnp_Version" => "2.0.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => $vnp_Locale,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef,
+        );
+
+        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+            $inputData['vnp_BankCode'] = $vnp_BankCode;
+        }
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . $key . "=" . $value;
+            } else {
+                $hashdata .= $key . "=" . $value;
+                $i = 1;
             }
-            Session::forget('cart');
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
 
-            $order_success = Session::get('order_success');
-            Session::put('order_success');
-            return redirect()->back()->with('order_success', 'Đặt hàng thành công');
+        $vnp_Url = $vnp_Url."?".$query;
+        if (isset($vnp_HashSecret)) {
+            // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+            $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+        }
+        if($request->input('id_user') == -1){
+
+            Session()->put('isset_id_user',-1);
+            Session()->put('fullname_c',$request->input('txt_billing_fullname'));
+            Session()->put('sdt_c',$request->input('txt_billing_mobile'));
+            Session()->put('email_c',$request->input('txt_billing_email'));
+            Session()->put('address_c',$request->input('txt_billing_addr1'));
+        }else{
+            Session()->put('isset_id_user',Auth::user()->id);
 
         }
+        return redirect($vnp_Url);
     }
-//    public function search(Request $req){
-//        $product = product::where('name_product','like','%'.$req->key.'%')
-//            ->orwhere('unit_price',$req->key)
-//            ->get();
-//        $temp=$req->key;
-//        return view('customer.search',compact('product'))->with([
-//            'temp'=>$temp
-//        ]);
-//}
+    public function return(Request $request)
+    {
+        $cart = Session()->get('cart');
+        $currentDate = Carbon::now();
+        $requiredDate = $currentDate->addDays(6);
+//        $url = session('url_prev','/');
+        if($request->vnp_ResponseCode == "00") {
+//            echo "ok";
+            if(Session()->get('isset_id_user') == -1){
+                $kh = new Khachhanng;
+                $kh->hoten = $request->input('fullname_c');
+                $kh->email = $request->input('email_c');
+                $kh->sdt = $request->input('sdt_c');
+                $kh->diachi = $request->input('address_c');
+                $kh->save();
+                $order = new Order;
+                $order->user_id = $kh->id;
+                $order->order_date = $currentDate;
+                $order->total_money = $cart->totalPrice;
+                $order->status = 3;
+                $order->save();
+            }else{
+                $order = new Order;
+                $order->user_id = Session()->get('isset_id_user');
+                $order->order_date = $currentDate;
+                $order->total_money = $cart->totalPrice;
+                $order->status = 3;
+                $order->save();
+            }
+            foreach($cart->items as $key => $value){
+                $order_detail = new OrderDetail();
+                $order_detail->order_id = $order->id;
+                $order_detail->product_id = $key;
+                $order_detail->quantity = $value['qty'];
+                $order_detail->unit_price = ($value['price']/$value['qty']);
+                $order_detail->save();
+            }
+
+            Session()->forget('cart');
+            return redirect()->route('home')->with('success' ,'Đã thanh toán phí dịch vụ');
+        }
+        return redirect()->route('datHang')->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+
+    }
     public function searchProduct(Request $request){
         $keyWord = $request->input('srch-term');
         $products = DB::table('products')->where('name_product', 'LIKE', '%'.$keyWord.'%')->paginate(8);

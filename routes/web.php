@@ -26,6 +26,8 @@ Route::get('/danhmuc', 'App\Http\Controllers\TestController@danhmuc');
 
 Route::get('/cart', 'App\Http\Controllers\TestController@cart')->name('cart');
 Route::get('add-card/{id}', 'App\Http\Controllers\TestController@addCard')->name('addCard');
+//Route::post('add-card-qty/{id}', 'App\Http\Controllers\TestController@addCard_qty')->name('addCard_qty');
+
 Route::get('update-cart', 'App\Http\Controllers\TestController@updateCart')->name('getUpdateCart');
 Route::get('delete-cart/{id}', 'App\Http\Controllers\TestController@getDeleteCart')->name('getDeleteCart');
 Route::get('/detail_cart/{ido}','App\Http\Controllers\TestController@detail_cart');
@@ -33,6 +35,8 @@ Route::get('/detail_cart/{ido}','App\Http\Controllers\TestController@detail_cart
 Route::get('/thanhtoan', 'App\Http\Controllers\TestController@thanhtoan')->name('thanhtoan');
 Route::post('/dat-hang', 'App\Http\Controllers\TestController@datHang')->name('datHang');
 
+Route::post('page-vnpay-checkout','App\Http\Controllers\TestController@create')->name('checkout_vnpay');
+Route::get('return-page-vnpay-checkout','App\Http\Controllers\TestController@return')->name('return_checkouSt_vnpay');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

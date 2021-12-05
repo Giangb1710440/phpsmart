@@ -328,7 +328,20 @@
             });
         });
     </script>
-
+    <script>
+        var msg = '{{Session::get('success')}}';
+        var exist = '{{Session::has('success')}}';
+        if(exist){
+            swal({
+                title: "Đã thanh toán",
+                text: "",
+                type: "success",
+                timer: 1200,
+                showConfirmButton: false,
+                position: 'top-end',
+            });
+        }
+    </script>
 @endsection
 
 <!-- Hero Section Begin -->

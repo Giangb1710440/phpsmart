@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => 'http://localhost/PhpSmart/public/storage',
+            'url' => 'http://localhost/phpsmart/public/storage',
             'visibility' => 'public',
         ],
 

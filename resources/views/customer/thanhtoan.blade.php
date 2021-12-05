@@ -36,25 +36,23 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="fir">Họ & Tên<span>*</span></label>
-                                <input type="text" id="fullname" name="fullname" value="">
+                                <input type="text" id="fullname" name="fullname" value="" required>
                             </div>
 
                             <div class="col-lg-6">
                                 <label for="email">Email <span>*</span></label>
-                                <input type="text" id="email" name="email" value="">
+                                <input type="text" id="email" name="email" value="" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="phone">Số điện thoại<span>*</span></label>
-                                <input type="text" id="phone" name="phone" value="">
+                                <input type="text" id="phone" name="phone" value="" required>
                             </div>
 
                             <div class="col-lg-12">
                                 <label for="street">Địa chỉ cụ thể<span>*</span></label>
-                                <input type="text" id="address" class="street-first" name="address" value="">
+                                <input type="text" id="address" class="street-first" name="address" value="" required>
                             </div>
-
                             <input type="hidden" value="-1" name="user_id">
-
                             <div class="col-lg-12">
                                 <div class="create-item">
                                     <label for="acc-create">
@@ -65,7 +63,6 @@
                         </div>
                     @endif
                 </div>
-
                 <div class="col-lg-6">
                     <div class="checkout-content">
                         <input type="text" placeholder="Mã Giảm Giá(Nếu có)">
@@ -87,26 +84,13 @@
 
                             </ul>
                             <div class="payment-check">
-                                <div class="pc-item">
-                                    <label for="pc-check">
-                                        Thanh toán bằng thẻ tín dụng (*)
-                                        <input type="checkbox" id="pc-check">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="pc-item">
-                                    <label for="pc-paypal">
-                                        Thanh toán khi nhận hàng
-                                        <input type="checkbox" id="pc-paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="pc-item">
-                                    <label for="pc-paypal">
-                                        Nhận hàng tại cửa hàng
-                                        <input type="checkbox" id="pc-paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                <div class="row">
+                                    <span>Hình thức thanh toán:  </span>
+                                    <select style="margin-left: 10px" name="type_pay" id="type_pay" required>
+                                        <option value="0">Chọn . . . </option>
+                                        <option value="1">Thanh toán khi nhận hàng </option>
+                                        <option value="2">Thanh toán VNpay</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="order-btn">
@@ -152,5 +136,33 @@
 
 
 
+    </script>
+    <script>
+        var msg1 = '{{Session::get('non_cate_pay')}}';
+        var exist1 = '{{Session::has('non_cate_pay')}}';
+        if(exist1){
+            swal({
+                title: "Chưa chọn hình thức thanh toán.",
+                text: "",
+                type: "info",
+                timer: 1200,
+                showConfirmButton: false,
+                position: 'top-end',
+            });
+        }
+    </script>
+    <script>
+        var msg = '{{Session::get('errors')}}';
+        var exist = '{{Session::has('errors')}}';
+        if(exist){
+            swal({
+                title: "Xãy ra lỗi, hãy kiểm tra lại",
+                text: "",
+                type: "error",
+                timer: 3000,
+                showConfirmButton: false,
+                position: 'top-end',
+            });
+        }
     </script>
 @endsection

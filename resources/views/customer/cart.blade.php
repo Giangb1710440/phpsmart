@@ -151,7 +151,7 @@
                 });
             }else{
                 swal({
-                    title: "Có tiền không mà mua cho dữ dạ má !",
+                    title: "Số lượng không cho phép !",
                     text: "",
                     type: "warning",
                     timer: 1000,

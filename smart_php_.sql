@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 09, 2021 lúc 05:18 PM
--- Phiên bản máy phục vụ: 10.4.20-MariaDB
--- Phiên bản PHP: 7.3.29
+-- Thời gian đã tạo: Th6 01, 2021 lúc 01:51 PM
+-- Phiên bản máy phục vụ: 10.4.17-MariaDB
+-- Phiên bản PHP: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -263,7 +263,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (72, 9, 'user_id', 'text', 'User Id', 0, 1, 1, 1, 1, 1, '{}', 2),
 (73, 9, 'order_date', 'text', 'Order Date', 0, 1, 1, 1, 1, 1, '{}', 3),
 (74, 9, 'total_money', 'text', 'Total Money', 0, 1, 1, 1, 1, 1, '{}', 4),
-(75, 9, 'status', 'text', 'Status', 0, 1, 1, 1, 1, 1, '{}', 5),
+(75, 9, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{}', 5),
 (76, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
 (77, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
 (78, 10, 'id', 'text', 'Id', 1, 1, 1, 1, 1, 1, '{}', 0),
@@ -295,7 +295,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (104, 12, 'detail_product_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Product\",\"table\":\"products\",\"type\":\"belongsTo\",\"column\":\"product_id\",\"key\":\"id\",\"label\":\"name_product\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
 (105, 10, 'order_detail_belongsto_order_relationship', 'relationship', 'orders', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Order\",\"table\":\"orders\",\"type\":\"belongsTo\",\"column\":\"order_id\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 9),
 (106, 10, 'order_detail_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Product\",\"table\":\"products\",\"type\":\"belongsTo\",\"column\":\"product_id\",\"key\":\"id\",\"label\":\"name_product\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 10),
-(107, 9, 'order_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 8),
+(107, 9, 'order_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
 (108, 8, 'product_belongsto_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Category\",\"table\":\"categories\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 11),
 (109, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 6),
 (110, 1, 'address', 'text', 'Address', 0, 1, 1, 1, 1, 1, '{}', 12),
@@ -312,7 +312,43 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (121, 8, 'describe_Hmid', 'text', 'Describe Hmid', 0, 1, 1, 1, 1, 1, '{}', 13),
 (122, 8, 'describe_Imid', 'multiple_images', 'Describe Imid', 0, 1, 1, 1, 1, 1, '{}', 14),
 (123, 8, 'describe_Hbot', 'text', 'Describe Hbot', 0, 1, 1, 1, 1, 1, '{}', 15),
-(124, 8, 'describe_Ibot', 'multiple_images', 'Describe Ibot', 0, 1, 1, 1, 1, 1, '{}', 16);
+(124, 8, 'describe_Ibot', 'multiple_images', 'Describe Ibot', 0, 1, 1, 1, 1, 1, '{}', 16),
+(125, 17, 'id_status', 'text', 'Id Status', 1, 1, 1, 1, 1, 1, '{}', 1),
+(126, 17, 'name_status', 'text', 'Name Status', 1, 1, 1, 1, 1, 1, '{}', 2),
+(127, 17, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 1, 1, '{}', 3),
+(128, 17, 'updated_at', 'timestamp', 'Updated At', 0, 1, 1, 1, 1, 1, '{}', 4),
+(129, 23, 'id', 'text', 'Id', 1, 1, 1, 0, 0, 0, '{}', 1),
+(130, 23, 'namestt', 'text', 'Namestt', 0, 1, 1, 1, 1, 1, '{}', 2),
+(131, 23, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
+(132, 23, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(133, 9, 'order_belongsto_sttorder_relationship', 'relationship', 'sttorders', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Sttorder\",\"table\":\"sttorders\",\"type\":\"belongsTo\",\"column\":\"status\",\"key\":\"id\",\"label\":\"namestt\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 9),
+(134, 24, 'id', 'text', 'Id', 1, 1, 1, 1, 1, 1, '{}', 1),
+(135, 24, 'user_id', 'text', 'User Id', 0, 1, 1, 1, 1, 1, '{}', 2),
+(136, 24, 'product_id', 'text', 'Product Id', 0, 1, 1, 1, 1, 1, '{}', 3),
+(137, 24, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(138, 24, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(139, 24, 'number', 'text', 'Number', 0, 1, 1, 1, 1, 1, '{}', 6),
+(149, 28, 'id', 'text', 'Id', 1, 1, 1, 0, 0, 0, '{}', 1),
+(150, 28, 'user_id', 'text', 'User Id', 0, 1, 1, 1, 1, 1, '{}', 2),
+(151, 28, 'product_id', 'text', 'Product Id', 0, 1, 1, 1, 1, 1, '{}', 3),
+(152, 28, 'rating_star', 'text', 'Rating Star', 0, 1, 1, 1, 1, 1, '{}', 4),
+(153, 28, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(154, 28, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(244, 47, 'id_ship', 'text', 'Id Ship', 1, 1, 1, 0, 0, 0, '{}', 1),
+(245, 47, 'ma_tp', 'text', 'Ma Tp', 0, 1, 1, 1, 1, 1, '{}', 2),
+(246, 47, 'ma_qh', 'text', 'Ma Qh', 0, 1, 1, 1, 1, 1, '{}', 3),
+(247, 47, 'phi_ship', 'text', 'Phi Ship', 0, 1, 1, 1, 1, 1, '{}', 4),
+(248, 47, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 5),
+(249, 47, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(250, 47, 'shipfree_belongsto_tblthanhpho_relationship', 'relationship', 'tblthanhphos', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\tblthanhpho\",\"table\":\"tblthanhphos\",\"type\":\"belongsTo\",\"column\":\"ma_tp\",\"key\":\"id_thanhpho\",\"label\":\"name_thanhpho\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
+(251, 47, 'shipfree_belongsto_tblquanhuyen_relationship', 'relationship', 'tblquanhuyens', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\tblquanhuyen\",\"table\":\"tblquanhuyens\",\"type\":\"belongsTo\",\"column\":\"ma_qh\",\"key\":\"id_quanhuyen\",\"label\":\"name_quanhuyen\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
+(252, 48, 'id_quanhuyen', 'text', 'Id Quanhuyen', 1, 1, 1, 0, 0, 0, '{}', 1),
+(253, 48, 'name_quanhuyen', 'text', 'Name Quanhuyen', 0, 1, 1, 1, 1, 1, '{}', 2),
+(254, 48, 'type', 'text', 'Type', 0, 1, 1, 1, 1, 1, '{}', 3),
+(255, 48, 'matp', 'text', 'Matp', 0, 1, 1, 1, 1, 1, '{}', 4),
+(256, 48, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(257, 48, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(258, 48, 'tblquanhuyen_belongsto_tblthanhpho_relationship', 'relationship', 'tblthanhphos', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\tblthanhpho\",\"table\":\"tblthanhphos\",\"type\":\"belongsTo\",\"column\":\"matp\",\"key\":\"id_thanhpho\",\"label\":\"name_thanhpho\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7);
 
 -- --------------------------------------------------------
 
@@ -351,11 +387,18 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2020-10-26 05:38:55', '2020-10-26 05:38:55'),
 (7, 'colors', 'colors', 'Color', 'Colors', NULL, 'App\\Color', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-27 03:34:09', '2020-10-27 03:34:09'),
 (8, 'products', 'products', 'Product', 'Products', NULL, 'App\\Product', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-27 03:48:03', '2021-04-25 22:36:42'),
-(9, 'orders', 'orders', 'Order', 'Orders', NULL, 'App\\Order', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-27 03:55:45', '2020-10-27 03:55:45'),
+(9, 'orders', 'orders', 'Order', 'Orders', NULL, 'App\\Order', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-27 03:55:45', '2021-05-09 11:06:12'),
 (10, 'order_details', 'order-details', 'Order Detail', 'Order Details', NULL, 'App\\OrderDetail', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-27 03:58:31', '2020-10-27 03:58:31'),
 (11, 'color_products', 'color-products', 'Color Product', 'Color Products', NULL, 'App\\ColorProduct', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-27 04:01:21', '2020-10-27 04:02:43'),
 (12, 'detail_products', 'detail-products', 'Detail Product', 'Detail Products', NULL, 'App\\DetailProduct', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-27 05:11:06', '2020-10-28 22:11:29'),
-(13, 'khachhanngs', 'khachhanngs', 'Khachhanng', 'Khachhanngs', NULL, 'App\\Khachhanng', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-11-19 05:30:03', '2020-11-19 05:30:03');
+(13, 'khachhanngs', 'khachhanngs', 'Khachhanng', 'Khachhanngs', NULL, 'App\\Khachhanng', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-11-19 05:30:03', '2020-11-19 05:30:03'),
+(17, 'status_order', 'status-order', 'Status Order', 'Status Orders', NULL, NULL, NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-05-09 08:48:06', '2021-05-09 08:48:06'),
+(23, 'sttorders', 'sttorders', 'Sttorder', 'Sttorders', NULL, 'App\\Models\\Sttorder', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-05-09 10:58:43', '2021-05-09 11:00:20'),
+(24, 'product_views', 'product-views', 'Product View', 'Product Views', NULL, 'App\\Models\\ProductView', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-05-16 22:31:08', '2021-05-16 22:31:08'),
+(25, 'tblcitys', 'tblcitys', 'Tblcity', 'Tblcities', NULL, 'App\\Tblcity', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-05-20 06:25:20', '2021-05-20 06:25:20'),
+(28, 'rating_stars', 'rating-stars', 'Rating Star', 'Rating Stars', 'voyager-star-two', 'App\\RatingStar', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-05-20 07:26:07', '2021-06-01 04:35:22'),
+(47, 'shipfrees', 'shipfrees', 'Shipfree', 'Shipfrees', NULL, 'App\\Shipfree', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-05-20 18:50:55', '2021-05-20 18:56:20'),
+(48, 'tblquanhuyens', 'tblquanhuyens', 'Tblquanhuyen', 'Tblquanhuyens', NULL, 'App\\Tblquanhuyen', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-05-20 18:54:15', '2021-05-20 18:54:53');
 
 -- --------------------------------------------------------
 
@@ -444,8 +487,7 @@ CREATE TABLE `khachhanngs` (
 --
 
 INSERT INTO `khachhanngs` (`id`, `hoten`, `email`, `sdt`, `diachi`, `created_at`, `updated_at`) VALUES
-(1, 'nguyen a', 'nguyen@gmail.com', '0939337416', 'Can Tho', '2020-11-19 06:02:26', '2020-11-19 06:02:26'),
-(8, NULL, NULL, NULL, NULL, '2021-04-29 03:34:05', '2021-04-29 03:34:05');
+(1, 'phan phu thuan', 'thuan@gmail.com', '0939337416', 'Can Tho', '2020-11-19 06:02:00', '2021-05-07 20:26:46');
 
 -- --------------------------------------------------------
 
@@ -494,27 +536,24 @@ CREATE TABLE `menu_items` (
 --
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
-(1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.media.index', NULL),
-(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 3, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.users.index', NULL),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 2, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2020-10-26 05:38:54', '2020-10-26 05:38:54', NULL, NULL),
-(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 10, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.menus.index', NULL),
-(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 11, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.database.index', NULL),
-(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 12, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.compass.index', NULL),
-(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 13, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 14, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2020-10-26 05:38:54', '2020-10-26 05:38:54', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2020-10-26 05:38:55', '2020-10-26 05:38:55', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2020-10-26 05:38:55', '2020-10-26 05:38:55', 'voyager.pages.index', NULL),
-(14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 13, '2020-10-26 05:38:55', '2020-10-26 05:38:55', 'voyager.hooks', NULL),
-(15, 1, 'Colors', '', '_self', NULL, NULL, NULL, 15, '2020-10-27 03:34:09', '2020-10-27 03:34:09', 'voyager.colors.index', NULL),
-(16, 1, 'Products', '', '_self', NULL, NULL, NULL, 16, '2020-10-27 03:48:03', '2020-10-27 03:48:03', 'voyager.products.index', NULL),
-(17, 1, 'Orders', '', '_self', NULL, NULL, NULL, 17, '2020-10-27 03:55:45', '2020-10-27 03:55:45', 'voyager.orders.index', NULL),
-(18, 1, 'Order Details', '', '_self', NULL, NULL, NULL, 18, '2020-10-27 03:58:31', '2020-10-27 03:58:31', 'voyager.order-details.index', NULL),
-(19, 1, 'Color Products', '', '_self', NULL, NULL, NULL, 19, '2020-10-27 04:01:21', '2020-10-27 04:01:21', 'voyager.color-products.index', NULL),
-(20, 1, 'Detail Products', '', '_self', NULL, NULL, NULL, 20, '2020-10-27 05:11:07', '2020-10-27 05:11:07', 'voyager.detail-products.index', NULL),
-(21, 1, 'Khachhanngs', '', '_self', NULL, NULL, NULL, 21, '2020-11-19 05:30:03', '2020-11-19 05:30:03', 'voyager.khachhanngs.index', NULL);
+(1, 1, 'Trang chủ', '', '_self', 'voyager-boat', '#000000', NULL, 1, '2020-10-26 05:38:54', '2021-05-18 08:54:50', 'voyager.dashboard', 'null'),
+(3, 1, 'Thành viên', '', '_self', 'voyager-person', '#000000', 28, 2, '2020-10-26 05:38:54', '2021-05-18 09:04:32', 'voyager.users.index', 'null'),
+(4, 1, 'Quyền', '', '_self', 'voyager-lock', '#000000', 28, 1, '2020-10-26 05:38:54', '2021-05-18 09:04:28', 'voyager.roles.index', 'null'),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 5, '2020-10-26 05:38:54', '2021-05-24 10:38:24', NULL, NULL),
+(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2020-10-26 05:38:54', '2021-05-18 09:04:23', 'voyager.menus.index', NULL),
+(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2020-10-26 05:38:54', '2021-05-18 09:05:34', 'voyager.database.index', NULL),
+(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 3, '2020-10-26 05:38:54', '2021-05-18 09:05:34', 'voyager.bread.index', NULL),
+(11, 1, 'Loại sản phẩm', '', '_self', 'voyager-categories', '#000000', 29, 1, '2020-10-26 05:38:54', '2021-05-18 09:05:14', 'voyager.categories.index', 'null'),
+(15, 1, 'Màu sắc', '', '_self', 'voyager-paw', '#000000', 29, 2, '2020-10-27 03:34:09', '2021-05-18 09:05:23', 'voyager.colors.index', 'null'),
+(16, 1, 'Sản phẩm', '', '_self', 'voyager-bag', '#000000', 29, 3, '2020-10-27 03:48:03', '2021-05-18 09:05:27', 'voyager.products.index', 'null'),
+(17, 1, 'Đơn hàng', '', '_self', 'voyager-list', '#000000', NULL, 4, '2020-10-27 03:55:45', '2021-05-24 10:38:24', 'voyager.orders.index', 'null'),
+(21, 1, 'Khách tự do', '', '_self', 'voyager-people', '#000000', 28, 3, '2020-11-19 05:30:03', '2021-05-18 09:05:35', 'voyager.khachhanngs.index', 'null'),
+(26, 1, 'Trạng thái đơn hàng', '', '_self', 'voyager-resize-small', '#000000', 17, 3, '2021-05-09 10:58:44', '2021-05-24 10:50:00', 'voyager.sttorders.index', 'null'),
+(28, 1, 'Tài Khoản', '', '_self', 'voyager-group', '#000000', NULL, 2, '2021-05-18 09:04:17', '2021-05-18 09:04:27', NULL, ''),
+(29, 1, 'Quản lý sản phẩm', '', '_self', 'voyager-pie-chart', '#000000', NULL, 3, '2021-05-18 09:05:00', '2021-05-18 09:05:35', NULL, ''),
+(33, 1, 'Rating Stars', '', '_self', NULL, NULL, 29, 4, '2021-05-20 07:26:07', '2021-05-20 19:57:18', 'voyager.rating-stars.index', NULL),
+(55, 1, 'Quản lý đơn hàng', '', '_self', NULL, '#000000', 17, 1, '2021-05-24 10:37:29', '2021-05-24 10:38:00', 'voyager.orders.index', NULL),
+(56, 1, 'Chi tiết đơn hàng', '', '_self', NULL, '#000000', 17, 2, '2021-05-24 10:38:41', '2021-05-24 10:50:00', 'voyager.order-details.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -560,7 +599,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2018_03_14_000000_add_details_to_data_types_table', 1),
 (26, '2018_03_16_000000_make_settings_value_nullable', 1),
 (27, '2019_08_19_000000_create_failed_jobs_table', 1),
-(28, '2021_04_25_173648_add_describe_to_products', 2);
+(28, '2021_04_25_173648_add_describe_to_products', 2),
+(29, '2021_04_28_025851_edit_news_table', 3),
+(30, '2021_05_09_152034_create_status_order', 4),
+(31, '2021_05_09_160801_create__status_order_table', 5),
+(32, '2021_05_15_171522_edit_orders_table', 6);
 
 -- --------------------------------------------------------
 
@@ -583,10 +626,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `order_date`, `total_money`, `status`, `created_at`, `updated_at`) VALUES
-(16, '11', '2021-04-28', 22490000, 'Mới đặt hàng', '2021-04-27 19:24:35', '2021-04-27 19:24:35'),
-(17, '8', '2021-04-29', 41880000, 'Mới đặt hàng', '2021-04-29 03:34:05', '2021-04-29 03:34:05'),
-(18, '11', '2021-04-29', 15990000, 'Mới đặt hàng', '2021-04-29 03:38:17', '2021-04-29 03:38:17'),
-(19, '11', '2021-04-29', 2000000, 'Mới đặt hàng', '2021-04-29 03:39:15', '2021-04-29 03:39:15');
+(16, '11', '2021-04-28', 22490000, '4', '2021-04-27 19:24:00', '2021-05-10 05:58:24'),
+(18, '11', '2021-04-29', 15990000, '2', '2021-04-29 03:38:00', '2021-05-10 05:57:52'),
+(19, '11', '2021-04-29', 2000000, '3', '2021-04-29 03:39:00', '2021-05-10 05:57:43'),
+(20, '11', '2021-05-06', 46270000, '1', '2021-05-06 06:45:00', '2021-05-10 06:14:34'),
+(21, '12', '2021-05-07', 17990000, '3', '2021-05-07 12:58:00', '2021-05-09 18:37:13');
 
 -- --------------------------------------------------------
 
@@ -615,7 +659,11 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `unit_p
 (21, '17', '13', 1, 25890000, NULL, '2021-04-29 03:34:05', '2021-04-29 03:34:05'),
 (22, '17', '19', 1, 15990000, NULL, '2021-04-29 03:34:05', '2021-04-29 03:34:05'),
 (23, '18', '19', 1, 15990000, NULL, '2021-04-29 03:38:17', '2021-04-29 03:38:17'),
-(24, '19', '22', 1, 2000000, NULL, '2021-04-29 03:39:15', '2021-04-29 03:39:15');
+(24, '19', '22', 1, 2000000, NULL, '2021-04-29 03:39:15', '2021-04-29 03:39:15'),
+(25, '20', '4', 2, 6990000, NULL, '2021-05-06 06:45:24', '2021-05-06 06:45:24'),
+(26, '20', '15', 1, 32290000, NULL, '2021-05-06 06:45:24', '2021-05-06 06:45:24'),
+(27, '21', '22', 1, 2000000, NULL, '2021-05-07 12:58:16', '2021-05-07 12:58:16'),
+(28, '21', '9', 1, 15990000, NULL, '2021-05-07 12:58:16', '2021-05-07 12:58:16');
 
 -- --------------------------------------------------------
 
@@ -751,7 +799,42 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (73, 'read_khachhanngs', 'khachhanngs', '2020-11-19 05:30:03', '2020-11-19 05:30:03'),
 (74, 'edit_khachhanngs', 'khachhanngs', '2020-11-19 05:30:03', '2020-11-19 05:30:03'),
 (75, 'add_khachhanngs', 'khachhanngs', '2020-11-19 05:30:03', '2020-11-19 05:30:03'),
-(76, 'delete_khachhanngs', 'khachhanngs', '2020-11-19 05:30:03', '2020-11-19 05:30:03');
+(76, 'delete_khachhanngs', 'khachhanngs', '2020-11-19 05:30:03', '2020-11-19 05:30:03'),
+(77, 'browse_status_order', 'status_order', '2021-05-09 08:48:06', '2021-05-09 08:48:06'),
+(78, 'read_status_order', 'status_order', '2021-05-09 08:48:06', '2021-05-09 08:48:06'),
+(79, 'edit_status_order', 'status_order', '2021-05-09 08:48:06', '2021-05-09 08:48:06'),
+(80, 'add_status_order', 'status_order', '2021-05-09 08:48:06', '2021-05-09 08:48:06'),
+(81, 'delete_status_order', 'status_order', '2021-05-09 08:48:06', '2021-05-09 08:48:06'),
+(92, 'browse_sttorders', 'sttorders', '2021-05-09 10:58:44', '2021-05-09 10:58:44'),
+(93, 'read_sttorders', 'sttorders', '2021-05-09 10:58:44', '2021-05-09 10:58:44'),
+(94, 'edit_sttorders', 'sttorders', '2021-05-09 10:58:44', '2021-05-09 10:58:44'),
+(95, 'add_sttorders', 'sttorders', '2021-05-09 10:58:44', '2021-05-09 10:58:44'),
+(96, 'delete_sttorders', 'sttorders', '2021-05-09 10:58:44', '2021-05-09 10:58:44'),
+(97, 'browse_product_views', 'product_views', '2021-05-16 22:31:08', '2021-05-16 22:31:08'),
+(98, 'read_product_views', 'product_views', '2021-05-16 22:31:08', '2021-05-16 22:31:08'),
+(99, 'edit_product_views', 'product_views', '2021-05-16 22:31:08', '2021-05-16 22:31:08'),
+(100, 'add_product_views', 'product_views', '2021-05-16 22:31:08', '2021-05-16 22:31:08'),
+(101, 'delete_product_views', 'product_views', '2021-05-16 22:31:08', '2021-05-16 22:31:08'),
+(102, 'browse_tblcitys', 'tblcitys', '2021-05-20 06:25:20', '2021-05-20 06:25:20'),
+(103, 'read_tblcitys', 'tblcitys', '2021-05-20 06:25:20', '2021-05-20 06:25:20'),
+(104, 'edit_tblcitys', 'tblcitys', '2021-05-20 06:25:20', '2021-05-20 06:25:20'),
+(105, 'add_tblcitys', 'tblcitys', '2021-05-20 06:25:20', '2021-05-20 06:25:20'),
+(106, 'delete_tblcitys', 'tblcitys', '2021-05-20 06:25:20', '2021-05-20 06:25:20'),
+(117, 'browse_rating_stars', 'rating_stars', '2021-05-20 07:26:07', '2021-05-20 07:26:07'),
+(118, 'read_rating_stars', 'rating_stars', '2021-05-20 07:26:07', '2021-05-20 07:26:07'),
+(119, 'edit_rating_stars', 'rating_stars', '2021-05-20 07:26:07', '2021-05-20 07:26:07'),
+(120, 'add_rating_stars', 'rating_stars', '2021-05-20 07:26:07', '2021-05-20 07:26:07'),
+(121, 'delete_rating_stars', 'rating_stars', '2021-05-20 07:26:07', '2021-05-20 07:26:07'),
+(212, 'browse_shipfrees', 'shipfrees', '2021-05-20 18:50:55', '2021-05-20 18:50:55'),
+(213, 'read_shipfrees', 'shipfrees', '2021-05-20 18:50:55', '2021-05-20 18:50:55'),
+(214, 'edit_shipfrees', 'shipfrees', '2021-05-20 18:50:55', '2021-05-20 18:50:55'),
+(215, 'add_shipfrees', 'shipfrees', '2021-05-20 18:50:55', '2021-05-20 18:50:55'),
+(216, 'delete_shipfrees', 'shipfrees', '2021-05-20 18:50:55', '2021-05-20 18:50:55'),
+(217, 'browse_tblquanhuyens', 'tblquanhuyens', '2021-05-20 18:54:15', '2021-05-20 18:54:15'),
+(218, 'read_tblquanhuyens', 'tblquanhuyens', '2021-05-20 18:54:15', '2021-05-20 18:54:15'),
+(219, 'edit_tblquanhuyens', 'tblquanhuyens', '2021-05-20 18:54:15', '2021-05-20 18:54:15'),
+(220, 'add_tblquanhuyens', 'tblquanhuyens', '2021-05-20 18:54:15', '2021-05-20 18:54:15'),
+(221, 'delete_tblquanhuyens', 'tblquanhuyens', '2021-05-20 18:54:15', '2021-05-20 18:54:15');
 
 -- --------------------------------------------------------
 
@@ -844,7 +927,42 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (73, 1),
 (74, 1),
 (75, 1),
-(76, 1);
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1),
+(96, 1),
+(97, 1),
+(98, 1),
+(99, 1),
+(100, 1),
+(101, 1),
+(102, 1),
+(103, 1),
+(104, 1),
+(105, 1),
+(106, 1),
+(117, 1),
+(118, 1),
+(119, 1),
+(120, 1),
+(121, 1),
+(212, 1),
+(213, 1),
+(214, 1),
+(215, 1),
+(216, 1),
+(217, 1),
+(218, 1),
+(219, 1),
+(220, 1),
+(221, 1);
 
 -- --------------------------------------------------------
 
@@ -928,7 +1046,85 @@ INSERT INTO `products` (`id`, `category_id`, `name_product`, `unit_price`, `prom
 (18, '4', 'iPad Air 4', 24990000, 0, 15, 'Còn hàng', '[\"products\\\\November2020\\\\jcTQWNJUpr8Y76jIFfcT.png\",\"products\\\\November2020\\\\sda3J5Yi796dOoqEp3Ue.png\",\"products\\\\November2020\\\\aDA8yfEx8HcWzNtk1aDg.png\"]', '2020-11-02 04:13:00', '2021-04-26 08:26:01', 'Apple trang bị cho iPad Air 4 chip A14 Bionic 6 nhân được sản xuất bởi TSMC với tiến trình 5 nm hiện đại nhất hiện nay. Số lượng bóng bán dẫn đạt 11.8 tỷ cao hơn 40% so với A13 Bionic (8.5 tỷ). Có thể thấy số lượng bóng bán dẫn càng lớn thì chip càng mạnh và tiết kiệm năng lượng hơn.A14 Bionic có 6 lõi chip, trong đó 2 lõi hiệu suất cao cho tác vụ phức tạp và 4 lõi còn lại cho các tác vụ thông thường.  Bên cạnh đó, bộ xử lý đồ hoạ GPU 4 lõi mang lại hiệu suất tối đa, nhanh hơn 30% so với thế hệ trước hứa hẹn iPad Air có thể chơi các trò chơi phức tạp đòi hỏi độ phân giải cao, video 4K,...', '[\"products\\\\April2021\\\\9QyEBwC1SREMKu7hKQ6X.jpg\",\"products\\\\April2021\\\\JPIYbC2jQbPB9lGNEiyH.jpg\"]', 'iPad Air 4 có kiểu dáng mới tương tự iPad Pro 2020 nhưng có kích thước nhỏ hơn và dày chỉ 6.1 mm, trọng lượng đạt 460 g dễ dàng mang theo bên mình mọi lúc mọi nơi. Thiết kế này giúp tương thích với bàn phím Apple Smart Keyboard Folio, Magic Keyboard của iPad Pro 11 inch và hỗ trợ bút Apple Pencil 2.Thiết kế trong iPad Air 4 vuông vắn hơn nếu so với những dòng iPad trước, các góc cạnh được bo tròn nhẹ nhàng tạo cảm giác mềm mại hơn cho tổng thể.Nút Home truyền thống được loại bỏ, tạo không gian hiển thị rộng hơn và tích hợp cảm biến vân tay Touch ID trên nút nguồn đặt ở phía trên của thân máy. Đồng thời, iPad Air trở thành sản phẩm đầu tiên của Apple tích hợp tính năng nhận diện vân tay vào chung với nút nguồn.', '[\"products\\\\April2021\\\\01cMSv8LqZzANNmMSn2c.jpg\",\"products\\\\April2021\\\\5PtzL3TpBeMBetqU1XNg.jpg\"]', 'iPad Air 2020 sử dụng công nghệ Liquid Retina và có độ phân giải 1640 x 2360 Pixels và có tần số quét đến 60 Hz giúp iPad Air hiển thị hình ảnh mượt mà hơn, các chuyển động hình ảnh trơn tru hơn, gần như loại bỏ hoàn toàn tình trạng giật lag.Từ đó, bạn có thể tận hưởng trọn ven những thước phim bom tấn ấn tượng hay chơi game phải gọi là \"bao mướt\". Màn hình của iPad Air có hỗ trợ hỗ trợ dải màu rộng DCI-P3 với tính năng True-Tone cho khả năng tái tạo màu sắc chính xác hỗ trợ ưu việt cho công việc đồ họa. Hơn nữa, có lớp phủ chống lóa bề mặt, độ sáng 500 nits giúp luôn hiển thị tốt trong nhiều điều ánh sáng khác nhau, ngoài trời cũng không thành vấn đề.', '[\"products\\\\April2021\\\\gyPiYVeoeXy7x38WsbeV.jpg\"]'),
 (19, '4', 'iPad 8 Wifi', 15990000, 0, 15, 'Còn hàng', '[\"products\\\\November2020\\\\LXXF9PRASknbxvnWyd8z.png\",\"products\\\\November2020\\\\90TmVGNQDbxitSIVLiJc.png\",\"products\\\\November2020\\\\dOxLHoZa9msjFisIiYNW.png\"]', '2020-11-02 04:15:00', '2021-04-26 08:28:05', 'iPad 2020 được thiết kế để thân thiện với môi trường và hỗ trợ kế hoạch của Apple để tất cả sản phẩm của họ trung tính carbon trong tương lai. iPad 8 sử dụng vỏ nhôm và thiếc tái chế 100%, chất liệu này vừa an toàn lại cho chiếc máy sự sang trọng đầy sức hút.', '[\"products\\\\April2021\\\\3g3XESqvm6q8B6NjaWsX.jpg\",\"products\\\\April2021\\\\FG1TJkfLuxnDrOtHybGk.jpg\"]', 'Thế hệ iPad 2020, cung cấp kèm theo iPadOS 14 mang đến thiết kế giao diện mới và các tính năng mới mẻ để tận dụng các khả năng độc đáo trên iPad.  iPadOS cũng mang tính năng Scribble lên iPad cho phép dùng Apple Pencil viết tay trực tiếp trong bất kỳ trường văn bản nào. Scribble sử dụng công nghệ máy học trên thiết bị để chuyển đổi chữ viết tay thành văn bản đã nhập trong thời gian thực, vì vậy chữ viết luôn được giữ riêng tư và bảo mật.Tính năng nhận dạng hình dạng cho phép người dùng vẽ các hình dạng hoàn hảo về mặt hình học và gắn ngay vào vị trí khi thêm sơ đồ và hình minh họa trong ghi chú. Vẫn còn nhiều điều hay ho cho bạn khám phá.', '[\"products\\\\April2021\\\\2YTBJ9ybZGHyW3FbFfAc.jpg\",\"products\\\\April2021\\\\YmHScYrU2v5TqxQ2CRhe.jpg\"]', 'Camera trên iPad 2020 tương tự trên iPad 2019 với phía sau được trang bị camera 8 MP, cho ra những bức ảnh màu sắc hài hoà, độ phơi sáng đồng đều và có thể quay video ở độ phân giải 1920 x 1080.Camera trước 1.2 MP có thể FaceTime với với bạn bè người hoặc thông qua các ứng dụng hỗ trợ video call và có thể quay video độ phân giải 1280 x 720.  Cùng với đó iPad 2020 được đánh giá cho 10 tiếng lướt lướt web, đảm bảo nhu cầu giải trí và làm việc được liên tục không ngắt quãng. Và được trang bị cáp sạc lightning với củ sạc 20 W giúp sạc nhanh hơn cho bạn thời gian chờ sạc ít hơn.', '[\"products\\\\April2021\\\\zqkwj9mRGhZnZ3fBBwke.jpg\"]'),
 (20, '4', 'iPad Mini 7.9', 13990000, 0, 10, 'Còn hàng', '[\"products\\\\November2020\\\\w1Dt3K1aLrJMtJ0AlE7F.png\",\"products\\\\November2020\\\\1AT2UM4nqEGzM7kWMre1.png\",\"products\\\\November2020\\\\5kAfxwW2eG7xM1jeqpGH.png\"]', '2020-11-02 04:15:00', '2021-04-26 08:31:50', 'Tất cả nâng cấp đều ở bên trong: IPad mini 4 và iPad Mini 7.9 inch Wifi 2019 là bước nhảy vọt về hiệu năng từ bộ xử lý A8 sang A12 Bionic mới nhất mang lại \"hiệu năng gấp 3 lần và đồ họa nhanh hơn 9 lần\".Đồng thời, dung lượng RAM đã có sự nâng cấp nhẹ so với thế hệ thứ 4, tăng từ 2 GB lên RAM 3 GB giúp bạn chạy đa nhiệm nhiều ứng dụng tốt hơn.Chip A12 Bionic được trang bị trên iPad Mini 7.9 inch Wifi 2019 là một trong những bộ xử lý di động tốt nhất trong việc chơi game hiện nay, đồng thời giúp xử lí các tác vụ khác một cách mượt mà.', '[\"products\\\\April2021\\\\5LBEPeUeD3I8uDLlAsnt.jpg\"]', 'Với nhu cầu làm việc, lướt web, xem video, chơi trò chơi và thậm chí chỉnh sửa video 4K trên thiết bị này đều được xử lí trơn tru và không bị trục trặc.', '[\"products\\\\April2021\\\\VYZyhnMa02br5kHtiEyy.jpg\",\"products\\\\April2021\\\\JSZRvTN2p2Lq0fhAOBDk.jpg\"]', 'Với iPad Mini 7.9 inch Wifi 2019 thì bạn sẽ có được 10 tiếng sử dụng liên tục với các tác vụ như xem video hay lướt web, một con số mà nhiều người hằng mơ ước.iPad Mini mới sở hữu loa kép hướng xuống dưới có âm lượng lớn cho trải nghiệm âm thanh khá tốt, đặc biệt là âm trầm.', '[\"products\\\\April2021\\\\3FdnPDVRhPUUvc6N9G5A.jpg\",\"products\\\\April2021\\\\gFR0EpvRZssTIroWvr6A.jpg\"]'),
-(22, '3', 'iPhone 6S VN/A', 2000000, 2000000, 20, 'còn hàng', '[\"products\\\\April2021\\\\AVjdbZYXZr2yXUIr0wM9.png\"]', '2021-04-25 10:50:00', '2021-04-26 06:31:03', 'Sắc hồng vàng bắt mắt và khác lạ Khác biệt duy nhất trong thiết kế của iPhone 6s và iPhone 6 là ở màu sắc mới: màu hồng vàng lạ mắt lần đầu xuất hiện, phù hợp với phần lớn các bạn nữ và số ít các bạn nam thích sự khác biệt độc đáo.', '[\"products\\\\April2021\\\\Vr0bHQbgW0maMQPKdTZJ.jpg\"]', 'Cảm ứng 3D Touch độc đáo 3D Touch là tính năng hoàn toàn mới trên iPhone 6s, cho phép người dùng xem trước được các tùy chọn nhanh dựa vào lực nhấn mạnh hay nhẹ mà không cần phải nhấp vào ứng dụng. Để sử dụng, bạn chỉ cần nhấn vào màn hình hoặc ứng dụng 1 lực mạnh đến khi máy rung nhẹ là có thể xem được.', '[\"products\\\\April2021\\\\jlQcCz2k3gczYwFizxJQ.jpg\"]', 'iPhone 6s sử dụng vi xử lý A9 tốc độ 1.8 GHz (iPhone 6 chỉ với 1.4 GHz), giúp máy phản hồi các tác vụ nhanh, chạy cùng lúc nhiều ứng dụng mượt mà.Ngoài ra chiếc điện thoại iPhone này còn được trang bị các công nghệ tiên tiến nhất hiện nay như: Wifi chuẩn ac, tính năng kết nối 4G thời thượng, cho tốc độ kết nối và tải dữ liệu rất nhanh. Cảm biến vân tay cải tiến giúp nhận diện và mở khóa nhanh hơn.', '[\"products\\\\April2021\\\\RUJcClHsDmcwjeP4Tdsp.jpg\"]');
+(23, '3', 'iPhone 6S VN/A', 2000000, NULL, 20, 'còn hàng', '[\"products\\\\May2021\\\\GC8O5JhVDQCpDUaUK18c.png\"]', '2021-05-20 20:02:00', '2021-05-20 20:20:37', 'Sắc hồng vàng bắt mắt và khác lạ Khác biệt duy nhất trong thiết kế của iPhone 6s và iPhone 6 là ở màu sắc mới: màu hồng vàng lạ mắt lần đầu xuất hiện, phù hợp với phần lớn các bạn nữ và số ít các bạn nam thích sự khác biệt độc đáo.', '[\"products\\\\May2021\\\\GEbF5ZlqBA8hALMuA7nT.jpg\"]', 'Cảm ứng 3D Touch độc đáo 3D Touch là tính năng hoàn toàn mới trên iPhone 6s, cho phép người dùng xem trước được các tùy chọn nhanh dựa vào lực nhấn mạnh hay nhẹ mà không cần phải nhấp vào ứng dụng. Để sử dụng, bạn chỉ cần nhấn vào màn hình hoặc ứng dụng 1 lực mạnh đến khi máy rung nhẹ là có thể xem được.', '[\"products\\\\May2021\\\\g2t44lTUytnGSQicrfex.jpg\"]', 'iPhone 6s sử dụng vi xử lý A9 tốc độ 1.8 GHz (iPhone 6 chỉ với 1.4 GHz), giúp máy phản hồi các tác vụ nhanh, chạy cùng lúc nhiều ứng dụng mượt mà.Ngoài ra chiếc điện thoại iPhone này còn được trang bị các công nghệ tiên tiến nhất hiện nay như: Wifi chuẩn ac, tính năng kết nối 4G thời thượng, cho tốc độ kết nối và tải dữ liệu rất nhanh. Cảm biến vân tay cải tiến giúp nhận diện và mở khóa nhanh hơn.', '[\"products\\\\May2021\\\\2V4D2qMwFAJPR56CvEdS.jpg\"]'),
+(24, '4', 'iPad Air 3 10.5 inch 2019 64GB Wifi + 4G', 13200000, NULL, 20, 'còn hàng', '[\"products\\\\May2021\\\\z9nXMVE0Gjxe34ly7aY2.jpg\"]', '2021-05-31 06:49:51', '2021-05-31 06:49:51', 'iPad Air 10.5 và iPad mini 5 2019 bất ngờ ra mắt: Tích hợp chip A12 Bionic, hỗ trợ Apple Pencil, hỗ trợ eSIM  Về thiết kế:  iPad Air 10.5 inch và iPad mini 5 mới sở hữu thiết kế không quá khác biệt so với các dòng iPad trước đó. Cả 2 đều có 3 màu sắc là Bạc (Silver), Vàng (Gold) và Xám (Space Grey), Dung lượng 64GB và 256GB. Màn hình của iPad Air 2019 mới có kích thước 10.5 inch Retina, độ phân giải 2224×1668, hỗ trợ gam màu rộng DCI-P3 và công nghệ True tone.', '[\"products\\\\May2021\\\\sAjbfb2Io0J9DKOZo5kQ.jpg\"]', 'Tuy nhiên, nó không có tần số quét 120Hz (ProMotion) như những chiếc iPad Pro, Nhưng với độ phân giải lên đến 2224 x 1668 Pixel, cho mật độ điểm ảnh 264 ppi, dùng công nghệ mới vào màn hình với tên gọi ProMotion tiên tiến, hiện đại, hỗ trợ độ sáng hơn 600nits cho phép bạn xem ảnh, video và trò chơi một cách sống động, chân thực đến từng chi tiết, cực kỳ di động và hoàn hảo để hoàn thành mọi việc ở mọi nơi. Nó mỏng và nhẹ, có kết nối không dây tiên tiến, độ sáng cao và lớp phủ chống phản xạ cho bạn trải nghiệm xem tốt nhất.', '[\"products\\\\May2021\\\\iAq0DfwbQNAKyyp5GTXp.jpeg\"]', 'iPad Air 10.5 inch có camera sau 8MP f/2.4, không có đèn flash LED hay quay phim 4K như trên iPad Pro. Camera trước của máy được nâng lên 7MP, cho phép bạn chụp ảnh tuyệt đẹp và video HD 1080, nhưng sẽ không có Portrait Mode, Portrait Lightning hay Animoji.Pad Pro 10.5 Apple đã trang bị một hệ thống camera cực kì tối tân. Với camera sau, thông số chi tiết gồm độ phân giải 12MP, khẩu độ f/1.8, tích hợp công nghệ chống rung quan học, đèn flash 4 LED true Tone, zoom kỹ thuật số 5x và chụp hình Wide Coler, sẵn sàng mang đến những chất lượng ảnh tốt nhất, và ngoài ra thì camera sau của máy cũng có khả năng quay video với độ phân giải lên đến 4K. Về camera trước, máy sở hữu ống kính 7MP, và cộng với tần số quét màn lền đến 120Hz, iPad Pro 10.5 mang đến trải nghiệm tuyệt với nhất khi Selfie, video call, Facetime', '[\"products\\\\May2021\\\\TjdwM4qlEnZHC4fnGfmE.jpg\"]');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `product_views`
+--
+
+CREATE TABLE `product_views` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `number` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `product_views`
+--
+
+INSERT INTO `product_views` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`, `number`) VALUES
+(1, 11, 19, '2021-05-16 22:36:54', '2021-05-16 22:36:54', 4),
+(2, 11, 13, '2021-05-16 22:37:00', '2021-05-16 22:37:00', 4),
+(3, 11, 11, '2021-05-16 23:12:09', '2021-05-16 23:12:09', 1),
+(4, 11, 14, '2021-05-16 23:16:58', '2021-05-16 23:16:58', 3),
+(5, 11, 2, '2021-05-16 23:22:47', '2021-05-16 23:22:47', 1),
+(6, 11, 4, '2021-05-16 23:38:33', '2021-05-16 23:38:33', 2),
+(7, 13, 13, '2021-05-17 08:55:10', '2021-05-17 08:55:10', 19),
+(8, 13, 15, '2021-05-17 08:55:25', '2021-05-17 08:55:25', 14),
+(9, 13, 22, '2021-05-17 09:06:41', '2021-05-17 09:06:41', 1),
+(10, 12, 22, '2021-05-20 05:20:05', '2021-05-20 05:20:05', 8),
+(11, 12, 19, '2021-05-20 05:28:07', '2021-05-20 05:28:07', 5),
+(12, 12, 18, '2021-05-20 05:28:14', '2021-05-20 05:28:14', 2),
+(13, 12, 15, '2021-05-20 05:28:24', '2021-05-20 05:28:24', 4),
+(14, 12, 3, '2021-05-20 19:47:41', '2021-05-20 19:47:41', 3),
+(15, 3, 22, '2021-05-20 19:59:55', '2021-05-20 19:59:55', 1),
+(16, 12, 20, '2021-05-20 20:45:10', '2021-05-20 20:45:10', 6),
+(17, 11, 18, '2021-05-20 21:23:21', '2021-05-20 21:23:21', 1),
+(18, 11, 23, '2021-05-20 21:23:27', '2021-05-20 21:23:27', 3),
+(19, 11, 12, '2021-05-20 21:25:35', '2021-05-20 21:25:35', 1),
+(20, 11, 20, '2021-05-20 21:25:44', '2021-05-20 21:25:44', 4),
+(21, 3, 13, '2021-05-20 22:08:26', '2021-05-20 22:08:26', 1),
+(22, 3, 19, '2021-05-20 23:55:35', '2021-05-20 23:55:35', 1),
+(23, 3, 24, '2021-05-24 10:46:18', '2021-05-24 10:46:18', 1),
+(24, 12, 9, '2021-05-26 02:51:54', '2021-05-26 02:51:54', 2),
+(25, 14, 20, '2021-05-26 02:56:39', '2021-05-26 02:56:39', 2),
+(26, 14, 19, '2021-05-26 02:56:48', '2021-05-26 02:56:48', 2),
+(27, 12, 24, '2021-05-31 06:51:19', '2021-05-31 06:51:19', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `rating_stars`
+--
+
+CREATE TABLE `rating_stars` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `rating_star` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `rating_stars`
+--
+
+INSERT INTO `rating_stars` (`id`, `user_id`, `product_id`, `rating_star`, `created_at`, `updated_at`) VALUES
+(1, 13, 13, 4, '2021-05-17 09:44:37', '2021-05-17 09:44:37'),
+(2, 12, 22, 5, '2021-05-20 05:20:23', '2021-05-20 05:20:23'),
+(3, 11, 23, 5, '2021-05-26 02:50:09', '2021-05-26 02:50:09'),
+(4, 11, 20, 5, '2021-05-26 02:50:20', '2021-05-26 02:50:20'),
+(5, 12, 20, 5, '2021-05-26 02:51:29', '2021-05-26 02:51:29'),
+(6, 12, 9, 5, '2021-05-26 02:51:57', '2021-05-26 02:51:57'),
+(7, 14, 20, 5, '2021-05-26 02:56:42', '2021-05-26 02:56:42'),
+(8, 14, 19, 5, '2021-05-26 02:56:51', '2021-05-26 02:56:51');
 
 -- --------------------------------------------------------
 
@@ -985,6 +1181,869 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
 (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
 (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `shipfrees`
+--
+
+CREATE TABLE `shipfrees` (
+  `id_ship` int(10) UNSIGNED NOT NULL,
+  `ma_tp` int(11) DEFAULT NULL,
+  `ma_qh` int(11) DEFAULT NULL,
+  `phi_ship` float DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `shipfrees`
+--
+
+INSERT INTO `shipfrees` (`id_ship`, `ma_tp`, `ma_qh`, `phi_ship`, `created_at`, `updated_at`) VALUES
+(1, 2, 52, 15000, '2021-05-20 18:56:36', '2021-05-20 18:56:36');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sttorders`
+--
+
+CREATE TABLE `sttorders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `namestt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sttorders`
+--
+
+INSERT INTO `sttorders` (`id`, `namestt`, `created_at`, `updated_at`) VALUES
+(1, 'đơn hàng không hợp lệ', '2021-05-09 10:59:00', '2021-05-09 11:01:09'),
+(2, 'đã giao', '2021-05-09 11:00:36', '2021-05-09 11:00:36'),
+(3, 'đã nhận đơn', '2021-05-09 11:00:47', '2021-05-09 11:00:47'),
+(4, 'đang giao hàng', '2021-05-10 05:58:14', '2021-05-10 05:58:14');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tblquanhuyens`
+--
+
+CREATE TABLE `tblquanhuyens` (
+  `id_quanhuyen` int(10) UNSIGNED NOT NULL,
+  `name_quanhuyen` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `matp` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tblquanhuyens`
+--
+
+INSERT INTO `tblquanhuyens` (`id_quanhuyen`, `name_quanhuyen`, `type`, `matp`, `created_at`, `updated_at`) VALUES
+(1, 'Quận Ba Đình', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Quận Hoàn Kiếm', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Quận Tây Hồ', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Quận Long Biên', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Quận Cầu Giấy', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Quận Đống Đa', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Quận Hai Bà Trưng', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'Quận Hoàng Mai', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'Quận Thanh Xuân', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'Huyện Sóc Sơn', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'Huyện Đông Anh', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'Huyện Gia Lâm', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'Quận Nam Từ Liêm', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 'Huyện Thanh Trì', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 'Quận Bắc Từ Liêm', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 'Thành phố Hà Giang', 'Thành phố', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 'Huyện Đồng Văn', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'Huyện Mèo Vạc', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 'Huyện Yên Minh', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 'Huyện Quản Bạ', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 'Huyện Vị Xuyên', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 'Huyện Bắc Mê', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 'Huyện Hoàng Su Phì', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'Huyện Xín Mần', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 'Huyện Bắc Quang', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 'Huyện Quang Bình', 'Huyện', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 'Thành phố Cao Bằng', 'Thành phố', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(42, 'Huyện Bảo Lâm', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(43, 'Huyện Bảo Lạc', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(44, 'Huyện Thông Nông', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(45, 'Huyện Hà Quảng', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(46, 'Huyện Trà Lĩnh', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(47, 'Huyện Trùng Khánh', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(48, 'Huyện Hạ Lang', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(49, 'Huyện Quảng Uyên', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(50, 'Huyện Phục Hoà', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 'Huyện Hoà An', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(52, 'Huyện Nguyên Bình', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(53, 'Huyện Thạch An', 'Huyện', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(58, 'Thành Phố Bắc Kạn', 'Thành phố', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(60, 'Huyện Pác Nặm', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(61, 'Huyện Ba Bể', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(62, 'Huyện Ngân Sơn', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(63, 'Huyện Bạch Thông', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(64, 'Huyện Chợ Đồn', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(65, 'Huyện Chợ Mới', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(66, 'Huyện Na Rì', 'Huyện', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(70, 'Thành phố Tuyên Quang', 'Thành phố', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(71, 'Huyện Lâm Bình', 'Huyện', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(72, 'Huyện Nà Hang', 'Huyện', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(73, 'Huyện Chiêm Hóa', 'Huyện', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(74, 'Huyện Hàm Yên', 'Huyện', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(75, 'Huyện Yên Sơn', 'Huyện', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(76, 'Huyện Sơn Dương', 'Huyện', 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(80, 'Thành phố Lào Cai', 'Thành phố', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(82, 'Huyện Bát Xát', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(83, 'Huyện Mường Khương', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(84, 'Huyện Si Ma Cai', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(85, 'Huyện Bắc Hà', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(86, 'Huyện Bảo Thắng', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(87, 'Huyện Bảo Yên', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(88, 'Huyện Sa Pa', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(89, 'Huyện Văn Bàn', 'Huyện', 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(94, 'Thành phố Điện Biên Phủ', 'Thành phố', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(95, 'Thị Xã Mường Lay', 'Thị xã', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(96, 'Huyện Mường Nhé', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(97, 'Huyện Mường Chà', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(98, 'Huyện Tủa Chùa', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(99, 'Huyện Tuần Giáo', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(100, 'Huyện Điện Biên', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(101, 'Huyện Điện Biên Đông', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(102, 'Huyện Mường Ảng', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(103, 'Huyện Nậm Pồ', 'Huyện', 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(105, 'Thành phố Lai Châu', 'Thành phố', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(106, 'Huyện Tam Đường', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(107, 'Huyện Mường Tè', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(108, 'Huyện Sìn Hồ', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(109, 'Huyện Phong Thổ', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(110, 'Huyện Than Uyên', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(111, 'Huyện Tân Uyên', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(112, 'Huyện Nậm Nhùn', 'Huyện', 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(116, 'Thành phố Sơn La', 'Thành phố', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(118, 'Huyện Quỳnh Nhai', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(119, 'Huyện Thuận Châu', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(120, 'Huyện Mường La', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(121, 'Huyện Bắc Yên', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(122, 'Huyện Phù Yên', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(123, 'Huyện Mộc Châu', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(124, 'Huyện Yên Châu', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(125, 'Huyện Mai Sơn', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(126, 'Huyện Sông Mã', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(127, 'Huyện Sốp Cộp', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(128, 'Huyện Vân Hồ', 'Huyện', 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(132, 'Thành phố Yên Bái', 'Thành phố', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(133, 'Thị xã Nghĩa Lộ', 'Thị xã', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(135, 'Huyện Lục Yên', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(136, 'Huyện Văn Yên', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(137, 'Huyện Mù Căng Chải', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(138, 'Huyện Trấn Yên', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(139, 'Huyện Trạm Tấu', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(140, 'Huyện Văn Chấn', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(141, 'Huyện Yên Bình', 'Huyện', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(148, 'Thành phố Hòa Bình', 'Thành phố', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(150, 'Huyện Đà Bắc', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(151, 'Huyện Kỳ Sơn', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(152, 'Huyện Lương Sơn', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(153, 'Huyện Kim Bôi', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(154, 'Huyện Cao Phong', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(155, 'Huyện Tân Lạc', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(156, 'Huyện Mai Châu', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(157, 'Huyện Lạc Sơn', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(158, 'Huyện Yên Thủy', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(159, 'Huyện Lạc Thủy', 'Huyện', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(164, 'Thành phố Thái Nguyên', 'Thành phố', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(165, 'Thành phố Sông Công', 'Thành phố', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(167, 'Huyện Định Hóa', 'Huyện', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(168, 'Huyện Phú Lương', 'Huyện', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(169, 'Huyện Đồng Hỷ', 'Huyện', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(170, 'Huyện Võ Nhai', 'Huyện', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(171, 'Huyện Đại Từ', 'Huyện', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(172, 'Thị xã Phổ Yên', 'Thị xã', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(173, 'Huyện Phú Bình', 'Huyện', 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(178, 'Thành phố Lạng Sơn', 'Thành phố', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(180, 'Huyện Tràng Định', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(181, 'Huyện Bình Gia', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(182, 'Huyện Văn Lãng', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(183, 'Huyện Cao Lộc', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(184, 'Huyện Văn Quan', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(185, 'Huyện Bắc Sơn', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(186, 'Huyện Hữu Lũng', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(187, 'Huyện Chi Lăng', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(188, 'Huyện Lộc Bình', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(189, 'Huyện Đình Lập', 'Huyện', 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(193, 'Thành phố Hạ Long', 'Thành phố', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(194, 'Thành phố Móng Cái', 'Thành phố', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(195, 'Thành phố Cẩm Phả', 'Thành phố', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(196, 'Thành phố Uông Bí', 'Thành phố', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(198, 'Huyện Bình Liêu', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(199, 'Huyện Tiên Yên', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(200, 'Huyện Đầm Hà', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(201, 'Huyện Hải Hà', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(202, 'Huyện Ba Chẽ', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(203, 'Huyện Vân Đồn', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(204, 'Huyện Hoành Bồ', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(205, 'Thị xã Đông Triều', 'Thị xã', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(206, 'Thị xã Quảng Yên', 'Thị xã', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(207, 'Huyện Cô Tô', 'Huyện', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(213, 'Thành phố Bắc Giang', 'Thành phố', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(215, 'Huyện Yên Thế', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(216, 'Huyện Tân Yên', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(217, 'Huyện Lạng Giang', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(218, 'Huyện Lục Nam', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(219, 'Huyện Lục Ngạn', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(220, 'Huyện Sơn Động', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(221, 'Huyện Yên Dũng', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(222, 'Huyện Việt Yên', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(223, 'Huyện Hiệp Hòa', 'Huyện', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(227, 'Thành phố Việt Trì', 'Thành phố', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(228, 'Thị xã Phú Thọ', 'Thị xã', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(230, 'Huyện Đoan Hùng', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(231, 'Huyện Hạ Hoà', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(232, 'Huyện Thanh Ba', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(233, 'Huyện Phù Ninh', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(234, 'Huyện Yên Lập', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(235, 'Huyện Cẩm Khê', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(236, 'Huyện Tam Nông', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(237, 'Huyện Lâm Thao', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(238, 'Huyện Thanh Sơn', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(239, 'Huyện Thanh Thuỷ', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(240, 'Huyện Tân Sơn', 'Huyện', 25, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(243, 'Thành phố Vĩnh Yên', 'Thành phố', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(244, 'Thị xã Phúc Yên', 'Thị xã', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(246, 'Huyện Lập Thạch', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(247, 'Huyện Tam Dương', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(248, 'Huyện Tam Đảo', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(249, 'Huyện Bình Xuyên', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(250, 'Huyện Mê Linh', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(251, 'Huyện Yên Lạc', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(252, 'Huyện Vĩnh Tường', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(253, 'Huyện Sông Lô', 'Huyện', 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(256, 'Thành phố Bắc Ninh', 'Thành phố', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(258, 'Huyện Yên Phong', 'Huyện', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(259, 'Huyện Quế Võ', 'Huyện', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(260, 'Huyện Tiên Du', 'Huyện', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(261, 'Thị xã Từ Sơn', 'Thị xã', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(262, 'Huyện Thuận Thành', 'Huyện', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(263, 'Huyện Gia Bình', 'Huyện', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(264, 'Huyện Lương Tài', 'Huyện', 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(268, 'Quận Hà Đông', 'Quận', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(269, 'Thị xã Sơn Tây', 'Thị xã', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(271, 'Huyện Ba Vì', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(272, 'Huyện Phúc Thọ', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(273, 'Huyện Đan Phượng', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(274, 'Huyện Hoài Đức', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(275, 'Huyện Quốc Oai', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(276, 'Huyện Thạch Thất', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(277, 'Huyện Chương Mỹ', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(278, 'Huyện Thanh Oai', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(279, 'Huyện Thường Tín', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(280, 'Huyện Phú Xuyên', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(281, 'Huyện Ứng Hòa', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(282, 'Huyện Mỹ Đức', 'Huyện', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(288, 'Thành phố Hải Dương', 'Thành phố', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(290, 'Thị xã Chí Linh', 'Thị xã', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(291, 'Huyện Nam Sách', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(292, 'Huyện Kinh Môn', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(293, 'Huyện Kim Thành', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(294, 'Huyện Thanh Hà', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(295, 'Huyện Cẩm Giàng', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(296, 'Huyện Bình Giang', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(297, 'Huyện Gia Lộc', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(298, 'Huyện Tứ Kỳ', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(299, 'Huyện Ninh Giang', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(300, 'Huyện Thanh Miện', 'Huyện', 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(303, 'Quận Hồng Bàng', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(304, 'Quận Ngô Quyền', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(305, 'Quận Lê Chân', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(306, 'Quận Hải An', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(307, 'Quận Kiến An', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(308, 'Quận Đồ Sơn', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(309, 'Quận Dương Kinh', 'Quận', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(311, 'Huyện Thuỷ Nguyên', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(312, 'Huyện An Dương', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(313, 'Huyện An Lão', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(314, 'Huyện Kiến Thuỵ', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(315, 'Huyện Tiên Lãng', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(316, 'Huyện Vĩnh Bảo', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(317, 'Huyện Cát Hải', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(318, 'Huyện Bạch Long Vĩ', 'Huyện', 31, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(323, 'Thành phố Hưng Yên', 'Thành phố', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(325, 'Huyện Văn Lâm', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(326, 'Huyện Văn Giang', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(327, 'Huyện Yên Mỹ', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(328, 'Huyện Mỹ Hào', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(329, 'Huyện Ân Thi', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(330, 'Huyện Khoái Châu', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(331, 'Huyện Kim Động', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(332, 'Huyện Tiên Lữ', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(333, 'Huyện Phù Cừ', 'Huyện', 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(336, 'Thành phố Thái Bình', 'Thành phố', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(338, 'Huyện Quỳnh Phụ', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(339, 'Huyện Hưng Hà', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(340, 'Huyện Đông Hưng', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(341, 'Huyện Thái Thụy', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(342, 'Huyện Tiền Hải', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(343, 'Huyện Kiến Xương', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(344, 'Huyện Vũ Thư', 'Huyện', 34, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(347, 'Thành phố Phủ Lý', 'Thành phố', 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(349, 'Huyện Duy Tiên', 'Huyện', 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(350, 'Huyện Kim Bảng', 'Huyện', 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(351, 'Huyện Thanh Liêm', 'Huyện', 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(352, 'Huyện Bình Lục', 'Huyện', 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(353, 'Huyện Lý Nhân', 'Huyện', 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(356, 'Thành phố Nam Định', 'Thành phố', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(358, 'Huyện Mỹ Lộc', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(359, 'Huyện Vụ Bản', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(360, 'Huyện Ý Yên', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(361, 'Huyện Nghĩa Hưng', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(362, 'Huyện Nam Trực', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(363, 'Huyện Trực Ninh', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(364, 'Huyện Xuân Trường', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(365, 'Huyện Giao Thủy', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(366, 'Huyện Hải Hậu', 'Huyện', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(369, 'Thành phố Ninh Bình', 'Thành phố', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(370, 'Thành phố Tam Điệp', 'Thành phố', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(372, 'Huyện Nho Quan', 'Huyện', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(373, 'Huyện Gia Viễn', 'Huyện', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(374, 'Huyện Hoa Lư', 'Huyện', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(375, 'Huyện Yên Khánh', 'Huyện', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(376, 'Huyện Kim Sơn', 'Huyện', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(377, 'Huyện Yên Mô', 'Huyện', 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(380, 'Thành phố Thanh Hóa', 'Thành phố', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(381, 'Thị xã Bỉm Sơn', 'Thị xã', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(382, 'Thị xã Sầm Sơn', 'Thị xã', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(384, 'Huyện Mường Lát', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(385, 'Huyện Quan Hóa', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(386, 'Huyện Bá Thước', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(387, 'Huyện Quan Sơn', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(388, 'Huyện Lang Chánh', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(389, 'Huyện Ngọc Lặc', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(390, 'Huyện Cẩm Thủy', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(391, 'Huyện Thạch Thành', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(392, 'Huyện Hà Trung', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(393, 'Huyện Vĩnh Lộc', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(394, 'Huyện Yên Định', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(395, 'Huyện Thọ Xuân', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(396, 'Huyện Thường Xuân', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(397, 'Huyện Triệu Sơn', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(398, 'Huyện Thiệu Hóa', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(399, 'Huyện Hoằng Hóa', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(400, 'Huyện Hậu Lộc', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(401, 'Huyện Nga Sơn', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(402, 'Huyện Như Xuân', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(403, 'Huyện Như Thanh', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(404, 'Huyện Nông Cống', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(405, 'Huyện Đông Sơn', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(406, 'Huyện Quảng Xương', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(407, 'Huyện Tĩnh Gia', 'Huyện', 38, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(412, 'Thành phố Vinh', 'Thành phố', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(413, 'Thị xã Cửa Lò', 'Thị xã', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(414, 'Thị xã Thái Hoà', 'Thị xã', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(415, 'Huyện Quế Phong', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(416, 'Huyện Quỳ Châu', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(417, 'Huyện Kỳ Sơn', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(418, 'Huyện Tương Dương', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(419, 'Huyện Nghĩa Đàn', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(420, 'Huyện Quỳ Hợp', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(421, 'Huyện Quỳnh Lưu', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(422, 'Huyện Con Cuông', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(423, 'Huyện Tân Kỳ', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(424, 'Huyện Anh Sơn', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(425, 'Huyện Diễn Châu', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(426, 'Huyện Yên Thành', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(427, 'Huyện Đô Lương', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(428, 'Huyện Thanh Chương', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(429, 'Huyện Nghi Lộc', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(430, 'Huyện Nam Đàn', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(431, 'Huyện Hưng Nguyên', 'Huyện', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(432, 'Thị xã Hoàng Mai', 'Thị xã', 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(436, 'Thành phố Hà Tĩnh', 'Thành phố', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(437, 'Thị xã Hồng Lĩnh', 'Thị xã', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(439, 'Huyện Hương Sơn', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(440, 'Huyện Đức Thọ', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(441, 'Huyện Vũ Quang', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(442, 'Huyện Nghi Xuân', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(443, 'Huyện Can Lộc', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(444, 'Huyện Hương Khê', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(445, 'Huyện Thạch Hà', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(446, 'Huyện Cẩm Xuyên', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(447, 'Huyện Kỳ Anh', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(448, 'Huyện Lộc Hà', 'Huyện', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(449, 'Thị xã Kỳ Anh', 'Thị xã', 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(450, 'Thành Phố Đồng Hới', 'Thành phố', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(452, 'Huyện Minh Hóa', 'Huyện', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(453, 'Huyện Tuyên Hóa', 'Huyện', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(454, 'Huyện Quảng Trạch', 'Thị xã', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(455, 'Huyện Bố Trạch', 'Huyện', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(456, 'Huyện Quảng Ninh', 'Huyện', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(457, 'Huyện Lệ Thủy', 'Huyện', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(458, 'Thị xã Ba Đồn', 'Huyện', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(461, 'Thành phố Đông Hà', 'Thành phố', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(462, 'Thị xã Quảng Trị', 'Thị xã', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(464, 'Huyện Vĩnh Linh', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(465, 'Huyện Hướng Hóa', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(466, 'Huyện Gio Linh', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(467, 'Huyện Đa Krông', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(468, 'Huyện Cam Lộ', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(469, 'Huyện Triệu Phong', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(470, 'Huyện Hải Lăng', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(471, 'Huyện Cồn Cỏ', 'Huyện', 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(474, 'Thành phố Huế', 'Thành phố', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(476, 'Huyện Phong Điền', 'Huyện', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(477, 'Huyện Quảng Điền', 'Huyện', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(478, 'Huyện Phú Vang', 'Huyện', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(479, 'Thị xã Hương Thủy', 'Thị xã', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(480, 'Thị xã Hương Trà', 'Thị xã', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(481, 'Huyện A Lưới', 'Huyện', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(482, 'Huyện Phú Lộc', 'Huyện', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(483, 'Huyện Nam Đông', 'Huyện', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(490, 'Quận Liên Chiểu', 'Quận', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(491, 'Quận Thanh Khê', 'Quận', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(492, 'Quận Hải Châu', 'Quận', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(493, 'Quận Sơn Trà', 'Quận', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(494, 'Quận Ngũ Hành Sơn', 'Quận', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(495, 'Quận Cẩm Lệ', 'Quận', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(497, 'Huyện Hòa Vang', 'Huyện', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(498, 'Huyện Hoàng Sa', 'Huyện', 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(502, 'Thành phố Tam Kỳ', 'Thành phố', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(503, 'Thành phố Hội An', 'Thành phố', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(504, 'Huyện Tây Giang', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(505, 'Huyện Đông Giang', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(506, 'Huyện Đại Lộc', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(507, 'Thị xã Điện Bàn', 'Thị xã', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(508, 'Huyện Duy Xuyên', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(509, 'Huyện Quế Sơn', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(510, 'Huyện Nam Giang', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(511, 'Huyện Phước Sơn', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(512, 'Huyện Hiệp Đức', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(513, 'Huyện Thăng Bình', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(514, 'Huyện Tiên Phước', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(515, 'Huyện Bắc Trà My', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(516, 'Huyện Nam Trà My', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(517, 'Huyện Núi Thành', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(518, 'Huyện Phú Ninh', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(519, 'Huyện Nông Sơn', 'Huyện', 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(522, 'Thành phố Quảng Ngãi', 'Thành phố', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(524, 'Huyện Bình Sơn', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(525, 'Huyện Trà Bồng', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(526, 'Huyện Tây Trà', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(527, 'Huyện Sơn Tịnh', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(528, 'Huyện Tư Nghĩa', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(529, 'Huyện Sơn Hà', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(530, 'Huyện Sơn Tây', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(531, 'Huyện Minh Long', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(532, 'Huyện Nghĩa Hành', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(533, 'Huyện Mộ Đức', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(534, 'Huyện Đức Phổ', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(535, 'Huyện Ba Tơ', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(536, 'Huyện Lý Sơn', 'Huyện', 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(540, 'Thành phố Qui Nhơn', 'Thành phố', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(542, 'Huyện An Lão', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(543, 'Huyện Hoài Nhơn', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(544, 'Huyện Hoài Ân', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(545, 'Huyện Phù Mỹ', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(546, 'Huyện Vĩnh Thạnh', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(547, 'Huyện Tây Sơn', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(548, 'Huyện Phù Cát', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(549, 'Thị xã An Nhơn', 'Thị xã', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(550, 'Huyện Tuy Phước', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(551, 'Huyện Vân Canh', 'Huyện', 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(555, 'Thành phố Tuy Hoà', 'Thành phố', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(557, 'Thị xã Sông Cầu', 'Thị xã', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(558, 'Huyện Đồng Xuân', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(559, 'Huyện Tuy An', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(560, 'Huyện Sơn Hòa', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(561, 'Huyện Sông Hinh', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(562, 'Huyện Tây Hoà', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(563, 'Huyện Phú Hoà', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(564, 'Huyện Đông Hòa', 'Huyện', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(568, 'Thành phố Nha Trang', 'Thành phố', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(569, 'Thành phố Cam Ranh', 'Thành phố', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(570, 'Huyện Cam Lâm', 'Huyện', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(571, 'Huyện Vạn Ninh', 'Huyện', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(572, 'Thị xã Ninh Hòa', 'Thị xã', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(573, 'Huyện Khánh Vĩnh', 'Huyện', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(574, 'Huyện Diên Khánh', 'Huyện', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(575, 'Huyện Khánh Sơn', 'Huyện', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(576, 'Huyện Trường Sa', 'Huyện', 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(582, 'Thành phố Phan Rang-Tháp Chàm', 'Thành phố', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(584, 'Huyện Bác Ái', 'Huyện', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(585, 'Huyện Ninh Sơn', 'Huyện', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(586, 'Huyện Ninh Hải', 'Huyện', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(587, 'Huyện Ninh Phước', 'Huyện', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(588, 'Huyện Thuận Bắc', 'Huyện', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(589, 'Huyện Thuận Nam', 'Huyện', 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(593, 'Thành phố Phan Thiết', 'Thành phố', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(594, 'Thị xã La Gi', 'Thị xã', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(595, 'Huyện Tuy Phong', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(596, 'Huyện Bắc Bình', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(597, 'Huyện Hàm Thuận Bắc', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(598, 'Huyện Hàm Thuận Nam', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(599, 'Huyện Tánh Linh', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(600, 'Huyện Đức Linh', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(601, 'Huyện Hàm Tân', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(602, 'Huyện Phú Quí', 'Huyện', 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(608, 'Thành phố Kon Tum', 'Thành phố', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(610, 'Huyện Đắk Glei', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(611, 'Huyện Ngọc Hồi', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(612, 'Huyện Đắk Tô', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(613, 'Huyện Kon Plông', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(614, 'Huyện Kon Rẫy', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(615, 'Huyện Đắk Hà', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(616, 'Huyện Sa Thầy', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(617, 'Huyện Tu Mơ Rông', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(618, 'Huyện Ia H\' Drai', 'Huyện', 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(622, 'Thành phố Pleiku', 'Thành phố', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(623, 'Thị xã An Khê', 'Thị xã', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(624, 'Thị xã Ayun Pa', 'Thị xã', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(625, 'Huyện KBang', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(626, 'Huyện Đăk Đoa', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(627, 'Huyện Chư Păh', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(628, 'Huyện Ia Grai', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(629, 'Huyện Mang Yang', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(630, 'Huyện Kông Chro', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(631, 'Huyện Đức Cơ', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(632, 'Huyện Chư Prông', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(633, 'Huyện Chư Sê', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(634, 'Huyện Đăk Pơ', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(635, 'Huyện Ia Pa', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(637, 'Huyện Krông Pa', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(638, 'Huyện Phú Thiện', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(639, 'Huyện Chư Pưh', 'Huyện', 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(643, 'Thành phố Buôn Ma Thuột', 'Thành phố', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(644, 'Thị Xã Buôn Hồ', 'Thị xã', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(645, 'Huyện Ea H\'leo', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(646, 'Huyện Ea Súp', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(647, 'Huyện Buôn Đôn', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(648, 'Huyện Cư M\'gar', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(649, 'Huyện Krông Búk', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(650, 'Huyện Krông Năng', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(651, 'Huyện Ea Kar', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(652, 'Huyện M\'Đrắk', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(653, 'Huyện Krông Bông', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(654, 'Huyện Krông Pắc', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(655, 'Huyện Krông A Na', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(656, 'Huyện Lắk', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(657, 'Huyện Cư Kuin', 'Huyện', 66, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(660, 'Thị xã Gia Nghĩa', 'Thị xã', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(661, 'Huyện Đăk Glong', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(662, 'Huyện Cư Jút', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(663, 'Huyện Đắk Mil', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(664, 'Huyện Krông Nô', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(665, 'Huyện Đắk Song', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(666, 'Huyện Đắk R\'Lấp', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(667, 'Huyện Tuy Đức', 'Huyện', 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(672, 'Thành phố Đà Lạt', 'Thành phố', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(673, 'Thành phố Bảo Lộc', 'Thành phố', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(674, 'Huyện Đam Rông', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(675, 'Huyện Lạc Dương', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(676, 'Huyện Lâm Hà', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(677, 'Huyện Đơn Dương', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(678, 'Huyện Đức Trọng', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(679, 'Huyện Di Linh', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(680, 'Huyện Bảo Lâm', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(681, 'Huyện Đạ Huoai', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(682, 'Huyện Đạ Tẻh', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(683, 'Huyện Cát Tiên', 'Huyện', 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(688, 'Thị xã Phước Long', 'Thị xã', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(689, 'Thị xã Đồng Xoài', 'Thị xã', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(690, 'Thị xã Bình Long', 'Thị xã', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(691, 'Huyện Bù Gia Mập', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(692, 'Huyện Lộc Ninh', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(693, 'Huyện Bù Đốp', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(694, 'Huyện Hớn Quản', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(695, 'Huyện Đồng Phú', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(696, 'Huyện Bù Đăng', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(697, 'Huyện Chơn Thành', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(698, 'Huyện Phú Riềng', 'Huyện', 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(703, 'Thành phố Tây Ninh', 'Thành phố', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(705, 'Huyện Tân Biên', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(706, 'Huyện Tân Châu', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(707, 'Huyện Dương Minh Châu', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(708, 'Huyện Châu Thành', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(709, 'Huyện Hòa Thành', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(710, 'Huyện Gò Dầu', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(711, 'Huyện Bến Cầu', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(712, 'Huyện Trảng Bàng', 'Huyện', 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(718, 'Thành phố Thủ Dầu Một', 'Thành phố', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(719, 'Huyện Bàu Bàng', 'Huyện', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(720, 'Huyện Dầu Tiếng', 'Huyện', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(721, 'Thị xã Bến Cát', 'Thị xã', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(722, 'Huyện Phú Giáo', 'Huyện', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(723, 'Thị xã Tân Uyên', 'Thị xã', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(724, 'Thị xã Dĩ An', 'Thị xã', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(725, 'Thị xã Thuận An', 'Thị xã', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(726, 'Huyện Bắc Tân Uyên', 'Huyện', 74, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(731, 'Thành phố Biên Hòa', 'Thành phố', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(732, 'Thị xã Long Khánh', 'Thị xã', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(734, 'Huyện Tân Phú', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(735, 'Huyện Vĩnh Cửu', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(736, 'Huyện Định Quán', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(737, 'Huyện Trảng Bom', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(738, 'Huyện Thống Nhất', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(739, 'Huyện Cẩm Mỹ', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(740, 'Huyện Long Thành', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(741, 'Huyện Xuân Lộc', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(742, 'Huyện Nhơn Trạch', 'Huyện', 75, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(747, 'Thành phố Vũng Tàu', 'Thành phố', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(748, 'Thành phố Bà Rịa', 'Thành phố', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(750, 'Huyện Châu Đức', 'Huyện', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(751, 'Huyện Xuyên Mộc', 'Huyện', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(752, 'Huyện Long Điền', 'Huyện', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(753, 'Huyện Đất Đỏ', 'Huyện', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(754, 'Huyện Tân Thành', 'Huyện', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(755, 'Huyện Côn Đảo', 'Huyện', 77, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(760, 'Quận 1', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(761, 'Quận 12', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(762, 'Quận Thủ Đức', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(763, 'Quận 9', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(764, 'Quận Gò Vấp', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(765, 'Quận Bình Thạnh', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(766, 'Quận Tân Bình', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(767, 'Quận Tân Phú', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(768, 'Quận Phú Nhuận', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(769, 'Quận 2', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(770, 'Quận 3', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(771, 'Quận 10', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(772, 'Quận 11', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(773, 'Quận 4', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(774, 'Quận 5', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(775, 'Quận 6', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(776, 'Quận 8', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(777, 'Quận Bình Tân', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(778, 'Quận 7', 'Quận', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(783, 'Huyện Củ Chi', 'Huyện', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(784, 'Huyện Hóc Môn', 'Huyện', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(785, 'Huyện Bình Chánh', 'Huyện', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(786, 'Huyện Nhà Bè', 'Huyện', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(787, 'Huyện Cần Giờ', 'Huyện', 79, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(794, 'Thành phố Tân An', 'Thành phố', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(795, 'Thị xã Kiến Tường', 'Thị xã', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(796, 'Huyện Tân Hưng', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(797, 'Huyện Vĩnh Hưng', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(798, 'Huyện Mộc Hóa', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(799, 'Huyện Tân Thạnh', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(800, 'Huyện Thạnh Hóa', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(801, 'Huyện Đức Huệ', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(802, 'Huyện Đức Hòa', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(803, 'Huyện Bến Lức', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(804, 'Huyện Thủ Thừa', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(805, 'Huyện Tân Trụ', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(806, 'Huyện Cần Đước', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(807, 'Huyện Cần Giuộc', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(808, 'Huyện Châu Thành', 'Huyện', 80, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(815, 'Thành phố Mỹ Tho', 'Thành phố', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(816, 'Thị xã Gò Công', 'Thị xã', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(817, 'Thị xã Cai Lậy', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(818, 'Huyện Tân Phước', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(819, 'Huyện Cái Bè', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(820, 'Huyện Cai Lậy', 'Thị xã', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(821, 'Huyện Châu Thành', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(822, 'Huyện Chợ Gạo', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(823, 'Huyện Gò Công Tây', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(824, 'Huyện Gò Công Đông', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(825, 'Huyện Tân Phú Đông', 'Huyện', 82, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `tblquanhuyens` (`id_quanhuyen`, `name_quanhuyen`, `type`, `matp`, `created_at`, `updated_at`) VALUES
+(829, 'Thành phố Bến Tre', 'Thành phố', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(831, 'Huyện Châu Thành', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(832, 'Huyện Chợ Lách', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(833, 'Huyện Mỏ Cày Nam', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(834, 'Huyện Giồng Trôm', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(835, 'Huyện Bình Đại', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(836, 'Huyện Ba Tri', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(837, 'Huyện Thạnh Phú', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(838, 'Huyện Mỏ Cày Bắc', 'Huyện', 83, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(842, 'Thành phố Trà Vinh', 'Thành phố', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(844, 'Huyện Càng Long', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(845, 'Huyện Cầu Kè', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(846, 'Huyện Tiểu Cần', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(847, 'Huyện Châu Thành', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(848, 'Huyện Cầu Ngang', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(849, 'Huyện Trà Cú', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(850, 'Huyện Duyên Hải', 'Huyện', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(851, 'Thị xã Duyên Hải', 'Thị xã', 84, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(855, 'Thành phố Vĩnh Long', 'Thành phố', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(857, 'Huyện Long Hồ', 'Huyện', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(858, 'Huyện Mang Thít', 'Huyện', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(859, 'Huyện  Vũng Liêm', 'Huyện', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(860, 'Huyện Tam Bình', 'Huyện', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(861, 'Thị xã Bình Minh', 'Thị xã', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(862, 'Huyện Trà Ôn', 'Huyện', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(863, 'Huyện Bình Tân', 'Huyện', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(866, 'Thành phố Cao Lãnh', 'Thành phố', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(867, 'Thành phố Sa Đéc', 'Thành phố', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(868, 'Thị xã Hồng Ngự', 'Thị xã', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(869, 'Huyện Tân Hồng', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(870, 'Huyện Hồng Ngự', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(871, 'Huyện Tam Nông', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(872, 'Huyện Tháp Mười', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(873, 'Huyện Cao Lãnh', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(874, 'Huyện Thanh Bình', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(875, 'Huyện Lấp Vò', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(876, 'Huyện Lai Vung', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(877, 'Huyện Châu Thành', 'Huyện', 87, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(883, 'Thành phố Long Xuyên', 'Thành phố', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(884, 'Thành phố Châu Đốc', 'Thành phố', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(886, 'Huyện An Phú', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(887, 'Thị xã Tân Châu', 'Thị xã', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(888, 'Huyện Phú Tân', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(889, 'Huyện Châu Phú', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(890, 'Huyện Tịnh Biên', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(891, 'Huyện Tri Tôn', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(892, 'Huyện Châu Thành', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(893, 'Huyện Chợ Mới', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(894, 'Huyện Thoại Sơn', 'Huyện', 89, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(899, 'Thành phố Rạch Giá', 'Thành phố', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(900, 'Thị xã Hà Tiên', 'Thị xã', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(902, 'Huyện Kiên Lương', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(903, 'Huyện Hòn Đất', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(904, 'Huyện Tân Hiệp', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(905, 'Huyện Châu Thành', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(906, 'Huyện Giồng Riềng', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(907, 'Huyện Gò Quao', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(908, 'Huyện An Biên', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(909, 'Huyện An Minh', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(910, 'Huyện Vĩnh Thuận', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(911, 'Huyện Phú Quốc', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(912, 'Huyện Kiên Hải', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(913, 'Huyện U Minh Thượng', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(914, 'Huyện Giang Thành', 'Huyện', 91, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(916, 'Quận Ninh Kiều', 'Quận', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(917, 'Quận Ô Môn', 'Quận', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(918, 'Quận Bình Thuỷ', 'Quận', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(919, 'Quận Cái Răng', 'Quận', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(923, 'Quận Thốt Nốt', 'Quận', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(924, 'Huyện Vĩnh Thạnh', 'Huyện', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(925, 'Huyện Cờ Đỏ', 'Huyện', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(926, 'Huyện Phong Điền', 'Huyện', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(927, 'Huyện Thới Lai', 'Huyện', 92, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(930, 'Thành phố Vị Thanh', 'Thành phố', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(931, 'Thị xã Ngã Bảy', 'Thị xã', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(932, 'Huyện Châu Thành A', 'Huyện', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(933, 'Huyện Châu Thành', 'Huyện', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(934, 'Huyện Phụng Hiệp', 'Huyện', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(935, 'Huyện Vị Thuỷ', 'Huyện', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(936, 'Huyện Long Mỹ', 'Huyện', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(937, 'Thị xã Long Mỹ', 'Thị xã', 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(941, 'Thành phố Sóc Trăng', 'Thành phố', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(942, 'Huyện Châu Thành', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(943, 'Huyện Kế Sách', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(944, 'Huyện Mỹ Tú', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(945, 'Huyện Cù Lao Dung', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(946, 'Huyện Long Phú', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(947, 'Huyện Mỹ Xuyên', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(948, 'Thị xã Ngã Năm', 'Thị xã', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(949, 'Huyện Thạnh Trị', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(950, 'Thị xã Vĩnh Châu', 'Thị xã', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(951, 'Huyện Trần Đề', 'Huyện', 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(954, 'Thành phố Bạc Liêu', 'Thành phố', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(956, 'Huyện Hồng Dân', 'Huyện', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(957, 'Huyện Phước Long', 'Huyện', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(958, 'Huyện Vĩnh Lợi', 'Huyện', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(959, 'Thị xã Giá Rai', 'Thị xã', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(960, 'Huyện Đông Hải', 'Huyện', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(961, 'Huyện Hoà Bình', 'Huyện', 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(964, 'Thành phố Cà Mau', 'Thành phố', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(966, 'Huyện U Minh', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(967, 'Huyện Thới Bình', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(968, 'Huyện Trần Văn Thời', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(969, 'Huyện Cái Nước', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(970, 'Huyện Đầm Dơi', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(971, 'Huyện Năm Căn', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(972, 'Huyện Phú Tân', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(973, 'Huyện Ngọc Hiển', 'Huyện', 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tblthanhphos`
+--
+
+CREATE TABLE `tblthanhphos` (
+  `id_thanhpho` int(10) UNSIGNED NOT NULL,
+  `name_thanhpho` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tblthanhphos`
+--
+
+INSERT INTO `tblthanhphos` (`id_thanhpho`, `name_thanhpho`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'Thành phố Hà Nội', 'Thành phố Trung ương', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Tỉnh Hà Giang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Tỉnh Cao Bằng', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Tỉnh Bắc Kạn', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'Tỉnh Tuyên Quang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'Tỉnh Lào Cai', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'Tỉnh Điện Biên', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Tỉnh Lai Châu', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'Tỉnh Sơn La', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'Tỉnh Yên Bái', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'Tỉnh Hoà Bình', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'Tỉnh Thái Nguyên', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 'Tỉnh Lạng Sơn', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 'Tỉnh Quảng Ninh', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 'Tỉnh Bắc Giang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 'Tỉnh Phú Thọ', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 'Tỉnh Vĩnh Phúc', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'Tỉnh Bắc Ninh', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 'Tỉnh Hải Dương', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 'Thành phố Hải Phòng', 'Thành phố Trung ương', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'Tỉnh Hưng Yên', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 'Tỉnh Thái Bình', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 'Tỉnh Hà Nam', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(36, 'Tỉnh Nam Định', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(37, 'Tỉnh Ninh Bình', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(38, 'Tỉnh Thanh Hóa', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 'Tỉnh Nghệ An', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(42, 'Tỉnh Hà Tĩnh', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(44, 'Tỉnh Quảng Bình', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(45, 'Tỉnh Quảng Trị', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(46, 'Tỉnh Thừa Thiên Huế', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(48, 'Thành phố Đà Nẵng', 'Thành phố Trung ương', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(49, 'Tỉnh Quảng Nam', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 'Tỉnh Quảng Ngãi', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(52, 'Tỉnh Bình Định', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(54, 'Tỉnh Phú Yên', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(56, 'Tỉnh Khánh Hòa', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(58, 'Tỉnh Ninh Thuận', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(60, 'Tỉnh Bình Thuận', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(62, 'Tỉnh Kon Tum', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(64, 'Tỉnh Gia Lai', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(66, 'Tỉnh Đắk Lắk', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(67, 'Tỉnh Đắk Nông', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(68, 'Tỉnh Lâm Đồng', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(70, 'Tỉnh Bình Phước', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(72, 'Tỉnh Tây Ninh', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(74, 'Tỉnh Bình Dương', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(75, 'Tỉnh Đồng Nai', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(77, 'Tỉnh Bà Rịa - Vũng Tàu', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(79, 'Thành phố Hồ Chí Minh', 'Thành phố Trung ương', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(80, 'Tỉnh Long An', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(82, 'Tỉnh Tiền Giang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(83, 'Tỉnh Bến Tre', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(84, 'Tỉnh Trà Vinh', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(86, 'Tỉnh Vĩnh Long', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(87, 'Tỉnh Đồng Tháp', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(89, 'Tỉnh An Giang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(91, 'Tỉnh Kiên Giang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(92, 'Thành phố Cần Thơ', 'Thành phố Trung ương', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(93, 'Tỉnh Hậu Giang', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(94, 'Tỉnh Sóc Trăng', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(95, 'Tỉnh Bạc Liêu', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(96, 'Tỉnh Cà Mau', 'Tỉnh', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1072,10 +2131,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `address`, `phone`) VALUES
 (1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$wjTBuc7NhI.SUqiCqWdHsewH5yADmq6WtVL/AfgZ53CCM/Y1F5Bo6', 'WUC0tbljZM59utP066VYu7Fqya8t80FrkfKwEk8aSUdlY4Yo1Yae62mUifdP', NULL, '2020-10-26 05:38:55', '2020-10-26 05:38:55', NULL, NULL),
 (2, 1, 'admin', 'your@email.com', 'users/default.png', NULL, '$2y$10$yj8k2fW1C7y701TRNnBWcucLlvgJwaAXSbAKT9El12dnl6S8bon6.', NULL, NULL, '2020-10-26 05:39:40', '2020-10-26 05:39:40', NULL, NULL),
-(3, 1, 'gianggiang', 'admin@gmail.com', 'users\\April2021\\GfOjBqzCWBJbYiK38imV.png', NULL, '$2y$10$OWf5.IPVsyw70bY5e8V2qug6tBf5ClO2cpyAdNBYFpX/ObazkM2L6', NULL, '{\"locale\":\"en\"}', '2020-10-26 05:41:06', '2021-04-27 00:12:18', NULL, NULL),
+(3, 1, 'gianggiang', 'admin@gmail.com', 'users\\May2021\\jQYpYb816VhTPd1E6XRd.jpg', NULL, '$2y$10$OWf5.IPVsyw70bY5e8V2qug6tBf5ClO2cpyAdNBYFpX/ObazkM2L6', NULL, '{\"locale\":\"en\"}', '2020-10-26 05:41:06', '2021-05-24 10:50:31', NULL, NULL),
 (5, 2, 'abc', 'email@gmail.com', 'users/default.png', NULL, '$2y$10$BJC13BU7gG3HnvqhwQdE0unsVzGRhB.ihOrYAm5OWmtlhbkS9e2TC', NULL, NULL, '2020-11-05 06:29:56', '2020-11-05 06:29:56', 'Can Tho', '0967897546'),
-(9, 2, 'dsad', 'net@gmail.com', 'users/default.png', NULL, '$2y$10$YMfefvNc9v3iT.FM4oESM.uOe8V1fFKQ/xAvi7iHY2a.Aq8CCgDyu', NULL, NULL, '2020-11-19 05:39:06', '2020-11-19 05:39:06', 'can tho', '0843685673'),
-(11, 2, 'phan phu thuan', 'thuan@gmail.com', 'users/default.png', NULL, '$2y$10$GbJ2ePJ1kUlOtibyWOS6fOxyCfFsb4rg8ZLY43IRgCtnAvqoDsIzC', NULL, NULL, '2021-04-22 22:56:01', '2021-04-22 22:56:01', 'can tho', '0939337416');
+(11, 2, 'phan phu thuan', 'thuan@gmail.com', 'z2450951208099_ba8c5c1c4f2a759685e51bf85409173c (1).jpg', NULL, '$2y$10$GbJ2ePJ1kUlOtibyWOS6fOxyCfFsb4rg8ZLY43IRgCtnAvqoDsIzC', NULL, '{\"locale\":\"en\"}', '2021-04-22 22:56:01', '2021-05-24 10:51:50', 'cần thơ', '0939337416'),
+(12, 2, 'Nguyễn Hà Giang', 'giangb1710440@student.ctu.edu.vn', 'z2450950384762_b050a71e7fea0b22942543c2f5bbe959.jpg', NULL, '$2y$10$OxOhugMKwe9jyqYS9aUJr.SJn0i424dNAxy2de7iHlk.DxSxgXwUO', NULL, '{\"locale\":\"en\"}', '2021-05-07 12:56:00', '2021-05-31 06:50:57', 'Cần Thơ', '0939337416'),
+(14, 2, 'Quách Thanh Phương', 'phuong@gmail.com', 'users/default.png', NULL, '$2y$10$J8JpN./w1wJyM4S2ckvIT.VI4lJ/nS6l55Wv9QmOExQI769CNwW22', NULL, NULL, '2021-05-26 02:56:00', '2021-05-26 02:56:00', 'Đại học cần thơ, 3/2, Ninh kiều, Cần Thơ', '0939337416');
 
 -- --------------------------------------------------------
 
@@ -1226,6 +2286,18 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `product_views`
+--
+ALTER TABLE `product_views`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `rating_stars`
+--
+ALTER TABLE `rating_stars`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
@@ -1238,6 +2310,30 @@ ALTER TABLE `roles`
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `settings_key_unique` (`key`);
+
+--
+-- Chỉ mục cho bảng `shipfrees`
+--
+ALTER TABLE `shipfrees`
+  ADD PRIMARY KEY (`id_ship`);
+
+--
+-- Chỉ mục cho bảng `sttorders`
+--
+ALTER TABLE `sttorders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tblquanhuyens`
+--
+ALTER TABLE `tblquanhuyens`
+  ADD PRIMARY KEY (`id_quanhuyen`);
+
+--
+-- Chỉ mục cho bảng `tblthanhphos`
+--
+ALTER TABLE `tblthanhphos`
+  ADD PRIMARY KEY (`id_thanhpho`);
 
 --
 -- Chỉ mục cho bảng `translations`
@@ -1270,7 +2366,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `colors`
@@ -1294,13 +2390,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT cho bảng `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT cho bảng `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT cho bảng `detail_products`
@@ -1318,7 +2414,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `khachhanngs`
 --
 ALTER TABLE `khachhanngs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `menus`
@@ -1330,25 +2426,25 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT cho bảng `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `pages`
@@ -1360,7 +2456,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT cho bảng `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT cho bảng `posts`
@@ -1372,7 +2468,19 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT cho bảng `product_views`
+--
+ALTER TABLE `product_views`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT cho bảng `rating_stars`
+--
+ALTER TABLE `rating_stars`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `roles`
@@ -1387,6 +2495,30 @@ ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT cho bảng `shipfrees`
+--
+ALTER TABLE `shipfrees`
+  MODIFY `id_ship` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `sttorders`
+--
+ALTER TABLE `sttorders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `tblquanhuyens`
+--
+ALTER TABLE `tblquanhuyens`
+  MODIFY `id_quanhuyen` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=974;
+
+--
+-- AUTO_INCREMENT cho bảng `tblthanhphos`
+--
+ALTER TABLE `tblthanhphos`
+  MODIFY `id_thanhpho` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+
+--
 -- AUTO_INCREMENT cho bảng `translations`
 --
 ALTER TABLE `translations`
@@ -1396,7 +2528,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
